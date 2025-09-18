@@ -298,9 +298,18 @@ export class Scores extends Component {
     }
   }
 
+  async componentDidMount(){
+    let url="<your api key>";
+    let data= await fetch(url);
+    let parsedData=await data.json();
+    console.log(parsedData);
+    this.setState({articles: parsedData.data})
+  }
+
   render() {
    
     return (
+     
       <div className="container my-3 ">
         <h2>Top Matches</h2>
        
@@ -308,13 +317,13 @@ export class Scores extends Component {
            {this.state.articles.map((ele)=>{
             return(
             <div className="col-md-3" matchId={ele.id}>
-            <ScoreCard name={ele.name}  
+            <ScoreCard name={ele.name? ele.name:""}  
             url1={ele.teamInfo[0].img} 
             url2={ele.teamInfo[1].img} 
             team1={ele.teamInfo[0].shortname} 
             team2={ele.teamInfo[1].shortname} 
-            r1={ele.score[0].r} w1={ele.score[0].w} o1={ele.score[0].o} 
-            r2={ele.score[1].r} w2={ele.score[1].w} o2={ele.score[1].o} 
+            r1={ele.score[0].r? ele.score[0].r :"0"} w1={ele.score[0].w?ele.score[0].w : "0"} o1={ele.score[0].o?ele.score[0].o : "0"} 
+            r2={(ele.score.length===2 && ele.score[1].r )? ele.score[1].r :"0"} w2={( ele.score.length===2 && ele.score[1].w)?ele.score[1].w : "0"} o2={(ele.score.length===2 && ele.score[1].o)?ele.score[1].o : "0"} 
             status={ele.status}/>
           </div>
             )

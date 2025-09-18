@@ -11,10 +11,11 @@ export class ScoreCard extends Component {
           
             <div className="card-body">
               <h5 className="card-title">{name}</h5>
-              <img src={url1} className="img-thumbnail" /> 
+              <img src={url1} className="img-fluid" /> 
               <span > {team1}     {r1}/{w1} ({o1})</span>
               <br />
-              <img src={url2} className="img-thumbnail"/>
+              <br />
+              <img src={url2} className="img-fluid"/>
               <span > {team2}     {r2}/{w2} ({o2})</span>
               <p className="card-text">{status}</p>
               <a href="/matchdetail/" className="btn btn-sm btn-primary">Read More</a>
