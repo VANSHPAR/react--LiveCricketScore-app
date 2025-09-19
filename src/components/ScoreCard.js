@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 export class ScoreCard extends Component {
   
   render() {
-     let {name,r1,w1,o1,r2,w2,o2,status,matchId,team1,team2,url1,url2}=this.props;
+     let {name,r1,w1,o1,r2,w2,o2,status,matchid,team1,team2,url1,url2}=this.props;
     return (
       <div className="my-3">
         <div className="card" style={{width: "18rem"}}>
