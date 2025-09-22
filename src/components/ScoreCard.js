@@ -17,7 +17,7 @@ export class ScoreCard extends Component {
               <br />
               <img src={url2} className="img-fluid"/>
               <span > {team2}     {r2}/{w2} ({o2})</span>
-              <p className="card-text">{status}</p>
+              <p className="card-text text-info-emphasis">{status}</p>
               <a href="/matchdetail/" className="btn btn-sm btn-primary">Read More</a>
             </div>
         </div>
