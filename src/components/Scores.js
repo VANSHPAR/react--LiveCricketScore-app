@@ -204,25 +204,7 @@ export class Scores extends Component {
     }
   }
 
-//     async componentDidMount(){
-//       let url="https://cricbuzz-cricket.p.rapidapi.com/matches/v1/recent";
-//       let options = {
-//     method: "GET",
-//     headers: {
-//       // "X-RapidAPI-Key": "YOUR_API_KEY",    
-//       // "X-RapidAPI-Host": "livescore6.p.rapidapi.com"
-//       "X-RapidAPI-Host": "livescore6.p.rapidapi.com",
-//       "X-RapidAPI-Key": "d8de258d21msh96065a13b9506c0p108b56jsnc3eecd186240"
-      
-//     }
-//   };
-// let data = await fetch(url, options);
-//     console.log(data);
-//     let parsedData = await data.json();
-//     console.log(parsedData.typeMatches);
-//     this.setState({ articles: parsedData.typeMatches });
-//     console.log(this.state.articles);
-//      }
+
     componentDidMount() {
   this.fetchMatches();
   this.interval = setInterval(this.fetchMatches, 60000); // 1 minute
@@ -238,7 +220,7 @@ fetchMatches = async () => {
     let options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "d8de258d21msh96065a13b9506c0p108b56jsnc3eecd186240",
+        "X-RapidAPI-Key": "your api key",
         "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
       }
     };
