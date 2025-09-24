@@ -231,7 +231,8 @@ fetchMatches = async () => {
     let options = {
       method: "GET",
       headers: {
-       
+        
+      
         "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
       }
     };
