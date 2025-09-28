@@ -5,6 +5,9 @@ import Navbar from './components/Navbar';
 import Scores from './components/Scores';
 import About from './components/About';
 import Detail from './components/Detail';
+import Live from './components/Live';
+
+import Matchinfo from './components/Matchinfo';
 import {
   BrowserRouter as Router,
   Routes,
@@ -24,7 +27,13 @@ export default class App extends Component {
                  <Route exact path="/recent" element={<Scores key="recent" type="recent"/>} />
                  <Route exact path="/upcoming" element={<Scores key="upcoming" type="upcoming"/>} />
                  <Route exact path="/about" element={<About />} />
-                 <Route  path="/detail/" element={<Detail />} />
+                 <Route  path="/detail/" element={<Detail />} >
+                 <Route index element={<Live />}/>
+                 <Route  path="live" element={<Live />} />
+                 <Route  path="hscorecard" element={<hscorecard />} />
+                 <Route  path="matchinfo" element={<Matchinfo />} />
+                 </Route>
+                 
        
        
        
