@@ -6,6 +6,7 @@ import Scores from './components/Scores';
 import About from './components/About';
 import Detail from './components/Detail';
 import Live from './components/Live';
+import Hscorecard from './components/Hscorecard';
 
 import Matchinfo from './components/Matchinfo';
 import {
@@ -30,7 +31,7 @@ export default class App extends Component {
                  <Route  path="/detail/" element={<Detail />} >
                  <Route index element={<Live />}/>
                  <Route  path="live" element={<Live />} />
-                 <Route  path="hscorecard" element={<hscorecard />} />
+                <Route  path="hscorecard" element={<Hscorecard />} />
                  <Route  path="matchinfo" element={<Matchinfo />} />
                  </Route>
                  
