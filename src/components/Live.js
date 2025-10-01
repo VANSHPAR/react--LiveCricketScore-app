@@ -239,7 +239,7 @@ constructor() {
 
       <div>
          <div className="my-3">
-              <div className="card" >
+              <div className="card border-dark mb-3" >
                 
                   <div className="card-body">
                     
@@ -249,13 +249,14 @@ constructor() {
                     <br />
                     {/* <img src={`https://cricbuzz-cricket.p.rapidapi.com/photos/v1/index?lastId=${url2}`} className="img-fluid"/> */}
                     <span > {this.state.articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.batTeamName}     {this.state.articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.score}/{this.state.articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.wickets} ({this.state.articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.overs})</span>
-                    {/* <p className="card-text text-info-emphasis">{status}</p>
-                    <Link to="/detail" className="btn btn-sm btn-primary" >Read More</Link> */}
+                    <p className="text-muted">TAR ({this.state.articles[0].miniscore.target})          CRR ({this.state.articles[0].miniscore.currentRunRate})          REQ ({this.state.articles[0].miniscore.requiredRunRate})          PSHIP {this.state.articles[0].miniscore.partnerShip.runs}({this.state.articles[0].miniscore.partnerShip.balls})</p>
+                     <p className="card-text text-info-emphasis">{this.state.articles[0].miniscore.matchScoreDetails?.customStatus}</p>
+                    {/*<Link to="/detail" className="btn btn-sm btn-primary" >Read More</Link> */}
                   </div>
               </div>
             </div>
-       <table className="table">
-  <thead>
+       <table className="table table-bordered ">
+  <thead className="table-success">
     <tr>
       <th scope="col">Batters</th>
       <th scope="col">R</th>
@@ -284,8 +285,8 @@ constructor() {
    
   </tbody>
 </table>
-<table className="table">
-  <thead>
+<table className="table table-bordered ">
+  <thead className="table-success">
     <tr>
       <th scope="col">Bowlers</th>
       <th scope="col">O</th>
@@ -313,6 +314,7 @@ constructor() {
   
   </tbody>
 </table>
+
       </div>
     )
   }
