@@ -263,6 +263,7 @@ constructor() {
       <th scope="col">B</th>
        <th scope="col">4s</th>
       <th scope="col">6s</th>
+      <th scope="col">SR</th>
     </tr>
   </thead>
   <tbody>
@@ -270,6 +271,7 @@ constructor() {
       <th scope="row">{this.state.articles[0].miniscore.batsmanStriker.batName}</th>
       
       <td>{this.state.articles[0].miniscore.batsmanStriker.batRuns}</td>
+      <td>{this.state.articles[0].miniscore.batsmanStriker.batBalls}</td>
       <td>{this.state.articles[0].miniscore.batsmanStriker.batFours}</td>
       <td>{this.state.articles[0].miniscore.batsmanStriker.batSixes}</td>
       <td>{this.state.articles[0].miniscore.batsmanStriker.batStrikeRate}</td>
@@ -278,6 +280,7 @@ constructor() {
      <th scope="row">{this.state.articles[0].miniscore.batsmanNonStriker.batName}</th>
       
       <td>{this.state.articles[0].miniscore.batsmanNonStriker.batRuns}</td>
+      <td>{this.state.articles[0].miniscore.batsmanNonStriker.batBalls}</td>
       <td>{this.state.articles[0].miniscore.batsmanNonStriker.batFours}</td>
       <td>{this.state.articles[0].miniscore.batsmanNonStriker.batSixes}</td>
       <td>{this.state.articles[0].miniscore.batsmanNonStriker.batStrikeRate}</td>

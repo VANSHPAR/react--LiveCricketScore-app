@@ -1626,47 +1626,187 @@ export default class Hscorecard extends Component {
   render() {
     return (
       <>
-      <div className="accordion-card style2 border border-success rounded">
-    <div className="accordion-header" id="collapse-item-2">
-        <button className="accordion-button collapsed text-success" type="button" 
-                data-bs-toggle="collapse" 
-                data-bs-target="#collapse-2" 
-                aria-expanded="false" 
-                aria-controls="collapse-2">
-            <span className="accrodion-title-span">Day - 2</span> KOLKATA TO GANGASAGAR
-        </button>
-    </div>
-    <div id="collapse-2" className="accordion-collapse collapse" aria-labelledby="collapse-item-2"
-        data-bs-parent="#faqAccordion">
-        <div className="accordion-body style2 border-top border-success">
-            <div className="row align-items-center">
-                <div className="col-md-8">
-                    <h5 className="name text-success">KOLKATA TO GANGASAGAR </h5>
-                    <p className="text text-justify">
-                        After breakfast check out from the hotel and transfer to Harwood Point 
-                        (For Gangasagar Excursion Vehicle will drop you till Harwood point and from there 
-                        you will have to take a ferry and after reaching Sagar Island you will board a local 
-                        transport to reach Sagar Island ). On arrival at Gangasagar check in to the hotel. 
-                        Overnight stay at Gangasagar. 
-                        <br/><b>SAGAR ISLAND LOCAL VEHICLE CHARGES ARE PAYABLE DIRECTLY IF NOT INCLUDED IN PACKAGE COST.</b>
-                    </p>
-                    <div className="d-flex justify-space-between align-items-center">
-                        <div className="blog-meta">
-                            <a><i className="fa-solid fa-plane text-success"></i> Flight</a>
-                            <a><i className="fa-solid fa-hospital text-success"></i> Hotel</a>
-                            <a><i className="fa-solid fa-cutlery text-success"></i> Meals</a>
-                            <a><i className="fa-solid fa-exchange text-success"></i> Transfers</a>
-                        </div>
+      
+        <div className="page-content" id="Itinerary">
+
+          <div className="accordion-area accordion mb-30" id="faqAccordion">
+            <div className="accordion-card style2 active">
+              <div className="accordion-header" id="collapse-item-1">
+                <button className="accordion-button d-flex justify-content-between"
+                  type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1"
+                  aria-expanded="true" aria-controls="collapse-1">
+                  <span className="accrodion-title-span">Innings - 1    {this.state.articles[0].scoreCard[0].batTeamDetails.batTeamName}</span>
+                  <span className="fw-bold ms-auto">{this.state.articles[0].scoreCard[0].scoreDetails.runs}/
+                    {this.state.articles[0].scoreCard[0].scoreDetails.wickets} (
+                    {this.state.articles[0].scoreCard[0].scoreDetails.overs})
+                  </span>
+                </button>
+              </div>
+              <div id="collapse-1" className="accordion-collapse collapse show"
+                aria-labelledby="collapse-item-1" data-bs-parent="#faqAccordion">
+                <div className="accordion-body style2">
+                  <div className="row align-items-center">
+                    <div className="col-md-8">
+
+                      <table className="table table-bordered ">
+                        <thead className="table-success">
+                          <tr>
+                            <th scope="col">Batters</th>
+                            <th scope="col">R</th>
+                            <th scope="col">B</th>
+                            <th scope="col">4s</th>
+                            <th scope="col">6s</th>
+                            <th scope="col">SR</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {Object.values(this.state.articles[0].scoreCard[0].batTeamDetails.batsmenData).map((b) => (
+                            <tr key={b.batId}>
+                              <th scope="row">{b.batName}
+                                <div className="text-muted">{b.outDesc}</div>
+                              </th>
+
+                              <td>{b.runs}</td>
+                              <td>{b.balls}</td>
+                              <td>{b.fours}</td>
+                              <td>{b.sixes}</td>
+                              <td>{b.strikeRate}</td>
+                            </tr>
+                          ))}
+
+
+                        </tbody>
+                      </table>
+                       <div className="my-3">Extras   <span>{this.state.articles[0].scoreCard[0].extrasData.total}(b {this.state.articles[0].scoreCard[0].extrasData.byes}, lb {this.state.articles[0].scoreCard[0].extrasData.legByes}, w {this.state.articles[0].scoreCard[0].extrasData.wides}, nb {this.state.articles[0].scoreCard[0].extrasData.noBalls}, p {this.state.articles[0].scoreCard[0].extrasData.penalty})</span></div>
+                      <table className="table table-bordered ">
+                        <thead className="table-success">
+                          <tr>
+                            <th scope="col">Bowlers</th>
+                            <th scope="col">O</th>
+                            <th scope="col">M</th>
+                            <th scope="col">R</th>
+                            <th scope="col">W</th>
+                            <th scope="col">Economy</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {Object.values(this.state.articles[0].scoreCard[0].bowlTeamDetails.bowlersData).map((b) => (
+                            <tr key={b.bowlerId}>
+                              <th scope="row">{b.bowlName}</th>
+
+                              <td>{b.overs}</td>
+                              <td>{b.maidens}</td>
+                              <td>{b.runs}</td>
+
+                              <td>{b.wickets}</td>
+                              <td>{b.economy}</td>
+
+                            </tr>
+                          ))}
+
+                        </tbody>
+                      </table>
+
+
                     </div>
-                    <p className="text-danger"><b>Note: Ferry will be issued as per the availability of tickets. Sightseeing will be covered as per ferry timings. </b></p>
+
+                  </div>
                 </div>
-                <div className="col-md-4">
-                    <img src="upload/domestic/2n_kolkata _1n_gangasagar_2n puri/itenary/01.jpg" className="accrodion-img rounded border border-success" alt="Comment Author"/>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</div>
+        <div className="page-content" id="Itinerary">
+
+          <div className="accordion-area accordion mb-30" id="faqAccordion">
+            <div className="accordion-card style2 active">
+              <div className="accordion-header" id="collapse-item-2">
+                <button className="accordion-button collapsed d-flex justify-content-between"
+                  type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2"
+                  aria-expanded="true" aria-controls="collapse-2">
+                    <span className="accrodion-title-span">Innings - 2    {this.state.articles[0].scoreCard[1].batTeamDetails.batTeamName}</span>
+                  <span className="fw-bold ms-auto">{this.state.articles[0].scoreCard[1].scoreDetails.runs}/
+                    {this.state.articles[0].scoreCard[1].scoreDetails.wickets} (
+                    {this.state.articles[0].scoreCard[1].scoreDetails.overs})
+                  </span>
+                </button>
+              </div>
+              <div id="collapse-2" className="accordion-collapse collapse"
+                aria-labelledby="collapse-item-2" data-bs-parent="#faqAccordion">
+                <div className="accordion-body style2">
+                  <div className="row align-items-center">
+                    <div className="col-md-8">
+
+                      <table className="table table-bordered ">
+                        <thead className="table-success">
+                          <tr>
+                            <th scope="col">Batters</th>
+                            <th scope="col">R</th>
+                            <th scope="col">B</th>
+                            <th scope="col">4s</th>
+                            <th scope="col">6s</th>
+                            <th scope="col">SR</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {Object.values(this.state.articles[0].scoreCard[1].batTeamDetails.batsmenData).map((b) => (
+                            <tr key={b.batId}>
+                              <th scope="row">{b.batName}
+                                <div className="text-muted">{b.outDesc}</div>
+                              </th>
+
+                              <td>{b.runs}</td>
+                              <td>{b.balls}</td>
+                              <td>{b.fours}</td>
+                              <td>{b.sixes}</td>
+                              <td>{b.strikeRate}</td>
+                            </tr>
+                          ))}
+
+
+                        </tbody>
+                      </table>
+                       <div className="my-3">Extras   <span>{this.state.articles[0].scoreCard[1].extrasData.total}(b {this.state.articles[0].scoreCard[1].extrasData.byes}, lb {this.state.articles[0].scoreCard[1].extrasData.legByes}, w {this.state.articles[0].scoreCard[1].extrasData.wides}, nb {this.state.articles[0].scoreCard[1].extrasData.noBalls}, p {this.state.articles[0].scoreCard[1].extrasData.penalty})</span></div>                   
+                      <table className="table table-bordered ">
+                        <thead className="table-success">
+                          <tr>
+                            <th scope="col">Bowlers</th>
+                            <th scope="col">O</th>
+                            <th scope="col">M</th>
+                            <th scope="col">R</th>
+                            <th scope="col">W</th>
+                            <th scope="col">Economy</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {Object.values(this.state.articles[0].scoreCard[1].bowlTeamDetails.bowlersData).map((b) => (
+                            <tr key={b.batId}>
+                              <th scope="row">{b.bowlName}</th>
+
+                              <td>{b.overs}</td>
+                              <td>{b.maidens}</td>
+                              <td>{b.runs}</td>
+
+                              <td>{b.wickets}</td>
+                              <td>{b.economy}</td>
+
+                            </tr>
+                          ))}
+
+                        </tbody>
+                      </table>
+
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
 
 
       </>
