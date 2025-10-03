@@ -5,10 +5,10 @@ import {
   Link
 } from "react-router-dom";
 
-export class ScoreCard extends Component {
+const ScoreCard = (props)=> {
   
-  render() {
-     let {name,r1,w1,o1,r2,w2,o2,status,matchid,team1,team2,url1,url2}=this.props;
+  
+     let {name,r1,w1,o1,r2,w2,o2,status,matchid,team1,team2,url1,url2}=props;
     return (
       <div className="my-3">
         <div className="card" >
@@ -22,12 +22,12 @@ export class ScoreCard extends Component {
               <img src={`https://cricbuzz-cricket.p.rapidapi.com/photos/v1/index?lastId=${url2}`} className="img-fluid"/>
               <span > {team2}     {r2}/{w2} ({o2})</span>
               <p className="card-text text-info-emphasis">{status}</p>
-              <Link to="/detail" className="btn btn-sm btn-primary" >Read More</Link>
+              <Link to={`/detail/${matchid}`} className="btn btn-sm btn-primary" >Read More</Link>
             </div>
         </div>
       </div>
     )
   }
-}
+
 
 export default ScoreCard

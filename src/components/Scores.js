@@ -310,6 +310,7 @@ export class Scores extends Component {
                   w2={ ele.seriesMatches[0]?.seriesAdWrapper?.matches[0]?.matchScore?.team2Score?.inngs1?.wickets ?? "0"} 
                   o2={ele.seriesMatches[0]?.seriesAdWrapper?.matches[0]?.matchScore?.team2Score?.inngs1?.overs ?? "0"}
                   status={ele.seriesMatches[0]?.seriesAdWrapper?.matches[0]?.matchInfo?.status ?? ""}
+                  matchid={ele.seriesMatches[0]?.seriesAdWrapper?.matches[0]?.matchInfo?.matchId}
                   />
               </div>
             )

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { format } from "date-fns";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default class Matchinfo extends Component {
  articles=[
@@ -635,8 +636,46 @@ export default class Matchinfo extends Component {
     this.state = {
       articles: this.articles,
       loading: false,
+    //  matchId: useParams()
     }
   }
+  // componentDidMount() {
+  //   this.fetchMatches();
+  //   this.interval = setInterval(this.fetchMatches, 60000); // 1 minute
+  // }
+  
+  // componentWillUnmount() {
+  //   clearInterval(this.interval);
+  // }
+  
+  // fetchMatches = async () => {
+   
+    
+  //   try {
+  //     let url = `https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/${this.state.matchId}`;
+      
+  //     let options = {
+  //       method: "GET",
+  //       headers: {
+          
+  //         "X-RapidAPI-Key": "d8de258d21msh96065a13b9506c0p108b56jsnc3eecd186240",
+  //         "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
+  //       }
+  //     };
+  //     this.setState({loading: true});
+  //     let data = await fetch(url, options);
+  //     console.log(data);
+  //     let parsedData = await data.json();
+  //     console.log(parsedData.typeMatches);
+      
+  //     this.setState({ articles: parsedData.typeMatches ,
+  //       loading: false
+  //     });
+  //     console.log(this.state.articles);
+  //   } catch (err) {
+  //     console.error("API error:", err);
+  //   }
+  // }
   render() {
     return (
       <>

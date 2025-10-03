@@ -2,19 +2,23 @@ import React, { Component } from 'react'
 import Live from './Live'
 import {
   Link,
-  Outlet
+  Outlet,
+  useParams
 } from "react-router-dom";
 
+
 export default class Detail extends Component {
-  
+  id=useParams()
+
   render() {
+    console.log(this.state.id);
     return (
       <>
         <h1 className="text-center">Match Details</h1>
         <hr />
         <ul className="nav nav-pills nav-fill nav-underline">
           <li className="nav-item">
-            <Link className="nav-link active"  to="live">Live</Link>
+            <Link  className="nav-link active"  to="live">Live</Link>
           </li>
            <li className="nav-item">
             <Link className="nav-link" to="hscorecard">Scorecard</Link>
