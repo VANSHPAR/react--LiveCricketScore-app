@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component , useState, useEffect } from 'react'
 import { useParams, useNavigate } from "react-router-dom";
 
-export default class Hscorecard extends Component {
-  articles = [
+const Hscorecard = (props)=> {
+  const data = [
     {
       "scoreCard": [
         {
@@ -1616,15 +1616,16 @@ export default class Hscorecard extends Component {
       "responseLastUpdated": 1650587016
     }
   ]
-  constructor() {
-    super();
-    console.log("constructor from scores")
-    this.state = {
-      articles: this.articles,
-      loading: false,
-     // matchId: useParams()
-    }
-  }
+   const [articles, setarticles] = useState(data)
+   const [loading, setloading] = useState(false)
+   const [matchId, setmatchid] = useState(useParams())
+
+   console.log(matchId)
+
+//  useEffect(() => {
+//    fetchMatches()
+//  }, [])
+ 
   
   // componentDidMount() {
   //   this.fetchMatches();
@@ -1635,11 +1636,11 @@ export default class Hscorecard extends Component {
   //   clearInterval(this.interval);
   // }
   
-  // fetchMatches = async () => {
+  // const fetchMatches = async () => {
    
     
   //   try {
-  //     let url = `https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/${this.state.matchId}/hscard`;
+  //     let url = `https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/${matchId}/hscard`;
       
   //     let options = {
   //       method: "GET",
@@ -1653,17 +1654,17 @@ export default class Hscorecard extends Component {
   //     let data = await fetch(url, options);
   //     console.log(data);
   //     let parsedData = await data.json();
-  //     console.log(parsedData.typeMatches);
+  //     setloading(true)
+  //   //  console.log(parsedData.typeMatches);
       
-  //     this.setState({ articles: parsedData.typeMatches ,
-  //       loading: false
-  //     });
-  //     console.log(this.state.articles);
+  //     setarticles(parsedData)
+  //     setloading(false)
+  //     console.log(articles);
   //   } catch (err) {
   //     console.error("API error:", err);
   //   }
   // }
-  render() {
+  
     return (
       <>
       
@@ -1675,10 +1676,10 @@ export default class Hscorecard extends Component {
                 <button className="accordion-button d-flex justify-content-between"
                   type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1"
                   aria-expanded="true" aria-controls="collapse-1">
-                  <span className="accrodion-title-span">Innings - 1    {this.state.articles[0].scoreCard[0].batTeamDetails.batTeamName}</span>
-                  <span className="fw-bold ms-auto">{this.state.articles[0].scoreCard[0].scoreDetails.runs}/
-                    {this.state.articles[0].scoreCard[0].scoreDetails.wickets} (
-                    {this.state.articles[0].scoreCard[0].scoreDetails.overs})
+                  <span className="accrodion-title-span">Innings - 1    {articles[0].scoreCard[0].batTeamDetails.batTeamName}</span>
+                  <span className="fw-bold ms-auto">{articles[0].scoreCard[0].scoreDetails.runs}/
+                    {articles[0].scoreCard[0].scoreDetails.wickets} (
+                    {articles[0].scoreCard[0].scoreDetails.overs})
                   </span>
                 </button>
               </div>
@@ -1700,7 +1701,7 @@ export default class Hscorecard extends Component {
                           </tr>
                         </thead>
                         <tbody>
-                          {Object.values(this.state.articles[0].scoreCard[0].batTeamDetails.batsmenData).map((b) => (
+                          {Object.values(articles[0].scoreCard[0].batTeamDetails.batsmenData).map((b) => (
                             <tr key={b.batId}>
                               <th scope="row">{b.batName}
                                 <div className="text-muted">{b.outDesc}</div>
@@ -1717,7 +1718,7 @@ export default class Hscorecard extends Component {
 
                         </tbody>
                       </table>
-                       <div className="my-3">Extras   <span>{this.state.articles[0].scoreCard[0].extrasData.total}(b {this.state.articles[0].scoreCard[0].extrasData.byes}, lb {this.state.articles[0].scoreCard[0].extrasData.legByes}, w {this.state.articles[0].scoreCard[0].extrasData.wides}, nb {this.state.articles[0].scoreCard[0].extrasData.noBalls}, p {this.state.articles[0].scoreCard[0].extrasData.penalty})</span></div>
+                       <div className="my-3">Extras   <span>{articles[0].scoreCard[0].extrasData.total}(b {articles[0].scoreCard[0].extrasData.byes}, lb {articles[0].scoreCard[0].extrasData.legByes}, w {articles[0].scoreCard[0].extrasData.wides}, nb {articles[0].scoreCard[0].extrasData.noBalls}, p {articles[0].scoreCard[0].extrasData.penalty})</span></div>
                       <table className="table table-bordered ">
                         <thead className="table-success">
                           <tr>
@@ -1730,7 +1731,7 @@ export default class Hscorecard extends Component {
                           </tr>
                         </thead>
                         <tbody>
-                          {Object.values(this.state.articles[0].scoreCard[0].bowlTeamDetails.bowlersData).map((b) => (
+                          {Object.values(articles[0].scoreCard[0].bowlTeamDetails.bowlersData).map((b) => (
                             <tr key={b.bowlerId}>
                               <th scope="row">{b.bowlName}</th>
 
@@ -1764,10 +1765,10 @@ export default class Hscorecard extends Component {
                 <button className="accordion-button collapsed d-flex justify-content-between"
                   type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2"
                   aria-expanded="true" aria-controls="collapse-2">
-                    <span className="accrodion-title-span">Innings - 2    {this.state.articles[0].scoreCard[1].batTeamDetails.batTeamName}</span>
-                  <span className="fw-bold ms-auto">{this.state.articles[0].scoreCard[1].scoreDetails.runs}/
-                    {this.state.articles[0].scoreCard[1].scoreDetails.wickets} (
-                    {this.state.articles[0].scoreCard[1].scoreDetails.overs})
+                    <span className="accrodion-title-span">Innings - 2    {articles[0].scoreCard[1].batTeamDetails.batTeamName}</span>
+                  <span className="fw-bold ms-auto">{articles[0].scoreCard[1].scoreDetails.runs}/
+                    {articles[0].scoreCard[1].scoreDetails.wickets} (
+                    {articles[0].scoreCard[1].scoreDetails.overs})
                   </span>
                 </button>
               </div>
@@ -1789,7 +1790,7 @@ export default class Hscorecard extends Component {
                           </tr>
                         </thead>
                         <tbody>
-                          {Object.values(this.state.articles[0].scoreCard[1].batTeamDetails.batsmenData).map((b) => (
+                          {Object.values(articles[0].scoreCard[1].batTeamDetails.batsmenData).map((b) => (
                             <tr key={b.batId}>
                               <th scope="row">{b.batName}
                                 <div className="text-muted">{b.outDesc}</div>
@@ -1806,7 +1807,7 @@ export default class Hscorecard extends Component {
 
                         </tbody>
                       </table>
-                       <div className="my-3">Extras   <span>{this.state.articles[0].scoreCard[1].extrasData.total}(b {this.state.articles[0].scoreCard[1].extrasData.byes}, lb {this.state.articles[0].scoreCard[1].extrasData.legByes}, w {this.state.articles[0].scoreCard[1].extrasData.wides}, nb {this.state.articles[0].scoreCard[1].extrasData.noBalls}, p {this.state.articles[0].scoreCard[1].extrasData.penalty})</span></div>                   
+                       <div className="my-3">Extras   <span>{articles[0].scoreCard[1].extrasData.total}(b {articles[0].scoreCard[1].extrasData.byes}, lb {articles[0].scoreCard[1].extrasData.legByes}, w {articles[0].scoreCard[1].extrasData.wides}, nb {articles[0].scoreCard[1].extrasData.noBalls}, p {articles[0].scoreCard[1].extrasData.penalty})</span></div>                   
                       <table className="table table-bordered ">
                         <thead className="table-success">
                           <tr>
@@ -1819,7 +1820,7 @@ export default class Hscorecard extends Component {
                           </tr>
                         </thead>
                         <tbody>
-                          {Object.values(this.state.articles[0].scoreCard[1].bowlTeamDetails.bowlersData).map((b) => (
+                          {Object.values(articles[0].scoreCard[1].bowlTeamDetails.bowlersData).map((b) => (
                             <tr key={b.batId}>
                               <th scope="row">{b.bowlName}</th>
 
@@ -1852,4 +1853,6 @@ export default class Hscorecard extends Component {
       </>
     )
   }
-}
+
+
+export default Hscorecard

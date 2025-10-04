@@ -7,11 +7,10 @@ import {
 } from "react-router-dom";
 
 
-export default class Detail extends Component {
-  id=useParams()
-
-  render() {
-    console.log(this.state.id);
+const Detail = (props)=> {
+  const {id}=useParams();
+  
+    
     return (
       <>
         <h1 className="text-center">Match Details</h1>
@@ -35,4 +34,4 @@ export default class Detail extends Component {
       </>
     )
   }
-}
+export default Detail

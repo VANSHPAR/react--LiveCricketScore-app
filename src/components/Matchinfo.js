@@ -1,9 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component , useEffect , useState } from 'react'
 import { format } from "date-fns";
 import { useParams, useNavigate } from "react-router-dom";
 
-export default class Matchinfo extends Component {
- articles=[
+const Matchinfo = ()=> {
+
+  console.log(useParams())
+ const data=[
   {
   "matchInfo": {
     "matchId": 41881,
@@ -630,15 +632,17 @@ export default class Matchinfo extends Component {
   }
 }
  ]
-  constructor() {
-    super();
-    console.log("constructor from scores")
-    this.state = {
-      articles: this.articles,
-      loading: false,
-    //  matchId: useParams()
-    }
-  }
+const [articles, setarticles] = useState(data)
+const [loading, setloading] = useState(false)
+const [matchId,setmatchid]=useState(useParams())
+
+// useEffect(() => {
+//   fetchMatches()
+
+ 
+// }, [])
+
+ 
   // componentDidMount() {
   //   this.fetchMatches();
   //   this.interval = setInterval(this.fetchMatches, 60000); // 1 minute
@@ -648,35 +652,34 @@ export default class Matchinfo extends Component {
   //   clearInterval(this.interval);
   // }
   
-  // fetchMatches = async () => {
+//  const fetchMatches = async () => {
    
     
-  //   try {
-  //     let url = `https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/${this.state.matchId}`;
+//     try {
+//       let url = `https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/${matchId}`;
       
-  //     let options = {
-  //       method: "GET",
-  //       headers: {
+//       let options = {
+//         method: "GET",
+//         headers: {
           
-  //         "X-RapidAPI-Key": "d8de258d21msh96065a13b9506c0p108b56jsnc3eecd186240",
-  //         "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
-  //       }
-  //     };
-  //     this.setState({loading: true});
-  //     let data = await fetch(url, options);
-  //     console.log(data);
-  //     let parsedData = await data.json();
-  //     console.log(parsedData.typeMatches);
+//           "X-RapidAPI-Key": "d8de258d21msh96065a13b9506c0p108b56jsnc3eecd186240",
+//           "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
+//         }
+//       };
+//       setloading(true);
+//       let data = await fetch(url, options);
+//       console.log(data);
+//       let parsedData = await data.json();
+//      // console.log(parsedData.typeMatches);
       
-  //     this.setState({ articles: parsedData.typeMatches ,
-  //       loading: false
-  //     });
-  //     console.log(this.state.articles);
-  //   } catch (err) {
-  //     console.error("API error:", err);
-  //   }
-  // }
-  render() {
+//       setarticles(parsedData)
+//       setloading(false)
+//       console.log(articles);
+//     } catch (err) {
+//       console.error("API error:", err);
+//     }
+//   }
+  
     return (
       <>
        <table className="table table-bordered ">
@@ -688,31 +691,31 @@ export default class Matchinfo extends Component {
                          
                             <tr >
                                <th scope="row">Match</th>
-                              <td>{this.state.articles[0].matchInfo.team1.shortName} vs {this.state.articles[0].matchInfo.team2.shortName} | {this.state.articles[0].matchInfo.matchDescription} | {this.state.articles[0].matchInfo.series.name} </td>
+                              <td>{articles[0].matchInfo.team1.shortName} vs {articles[0].matchInfo.team2.shortName} | {articles[0].matchInfo.matchDescription} | {articles[0].matchInfo.series.name} </td>
                             </tr>
                             <tr >
                                <th scope="row">Series</th>
-                              <td>{this.state.articles[0].matchInfo.series.name} </td>
+                              <td>{articles[0].matchInfo.series.name} </td>
                             </tr>
                             <tr >
                                <th scope="row">Toss</th>
-                              <td>{this.state.articles[0].matchInfo.tossResults.tossWinnerName} won the toss and opt to {this.state.articles[0].matchInfo.tossResults.decision}  </td>
+                              <td>{articles[0].matchInfo.tossResults.tossWinnerName} won the toss and opt to {articles[0].matchInfo.tossResults.decision}  </td>
                             </tr>
                              <tr >
                                <th scope="row">Venue</th>
-                              <td>{this.state.articles[0].matchInfo.venue.name}, {this.state.articles[0].matchInfo.venue.city}, {this.state.articles[0].matchInfo.venue.country} </td>
+                              <td>{articles[0].matchInfo.venue.name}, {articles[0].matchInfo.venue.city}, {articles[0].matchInfo.venue.country} </td>
                             </tr>
                              <tr >
                                <th scope="row">Umpires</th>
-                              <td>{this.state.articles[0].matchInfo.umpire1.name}, {this.state.articles[0].matchInfo.umpire2.name}</td>
+                              <td>{articles[0].matchInfo.umpire1.name}, {articles[0].matchInfo.umpire2.name}</td>
                             </tr>
                             <tr >
                                <th scope="row">3rd Umpire</th>
-                              <td>{this.state.articles[0].matchInfo.umpire3.name}</td>
+                              <td>{articles[0].matchInfo.umpire3.name}</td>
                             </tr>
                              <tr >
                                <th scope="row">Refree</th>
-                              <td>{this.state.articles[0].matchInfo.referee.name}</td>
+                              <td>{articles[0].matchInfo.referee.name}</td>
                             </tr>
 
                             
@@ -728,4 +731,4 @@ export default class Matchinfo extends Component {
       </>
     )
   }
-}
+export default Matchinfo

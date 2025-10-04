@@ -1,17 +1,12 @@
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React, { useEffect , useState } from 'react'
 import ScoreCard from './ScoreCard'
 import Spinner from './Spinner'
 
 
-export class Scores extends Component {
-  static defaultProps={
-    type: 'live'
-  }
-  static propTypes={
-    type: PropTypes.string,
-  }
-  articles = [
+const Scores = (props)=> {
+ 
+  const data = [
     {
             "matchType": "International",
             "seriesMatches": [
@@ -201,32 +196,32 @@ export class Scores extends Component {
             ]
         }
   ]
+ const [articles, setArticles] = useState(data)
+  const [loading, setLoading] = useState(false)
+  const [page,setPage]=useState(1)
+ 
+// useEffect(() => {
+//   fetchMatches()
+//  // interval = setInterval(fetchMatches, 60000); 
 
-  constructor() {
-    super();
-    console.log("constructor from scores")
-    this.state = {
-      articles: this.articles,
-      loading: false,
-      page: 1
-    }
-  }
+  
+// }, [])
 
 
 //     componentDidMount() {
-//   this.fetchMatches();
-//   this.interval = setInterval(this.fetchMatches, 60000); // 1 minute
+//   fetchMatches();
+//   interval = setInterval(fetchMatches, 60000); // 1 minute
 // }
 
 // componentWillUnmount() {
-//   clearInterval(this.interval);
+//   clearInterval(interval);
 // }
 
-// fetchMatches = async () => {
+// const fetchMatches = async () => {
  
   
 //   try {
-//     let url = `https://cricbuzz-cricket.p.rapidapi.com/matches/v1/${this.props.type}`;
+//     let url = `https://cricbuzz-cricket.p.rapidapi.com/matches/v1/${props.type}`;
     
 //     let options = {
 //       method: "GET",
@@ -236,16 +231,15 @@ export class Scores extends Component {
 //         "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
 //       }
 //     };
-//     this.setState({loading: true});
+//     setLoading(true)
 //     let data = await fetch(url, options);
 //     console.log(data);
 //     let parsedData = await data.json();
 //     console.log(parsedData.typeMatches);
+//     setArticles(parsedData.typeMatches)
+//     setLoading(false)
     
-//     this.setState({ articles: parsedData.typeMatches ,
-//       loading: false
-//     });
-//     console.log(this.state.articles);
+//     console.log(articles);
 //   } catch (err) {
 //     console.error("API error:", err);
 //   }
@@ -254,47 +248,46 @@ export class Scores extends Component {
 
   //   handlePreviousClick= async ()=>{
   //   console.log("previouse")
-  //    let url=`https://api.cricapi.com/v1/currentMatches?apikey=f7da89bf-c58e-4d8d-8fd5-adda566f0e76&offset=0&page=${this.state.page-1}&pageSize=6`;
+  //    let url=`https://api.cricapi.com/v1/currentMatches?apikey=f7da89bf-c58e-4d8d-8fd5-adda566f0e76&offset=0&page=${page-1}&pageSize=6`;
   //     let data= await fetch(url);
   //     let parsedData=await data.json();
   //     console.log(parsedData);
 
-  //     this.setState({
+  //     setState({
   //       articles: parsedData.data,
-  //       page: this.state.page-1
+  //       page: page-1
   //     })
   //   }
 
 
   //  handleNextClick= async ()=>{
-  //   if(this.state.page+1 > Math.ceil(this.state.totalResults/6)){
+  //   if(page+1 > Math.ceil(totalResults/6)){
 
   //   }
   //     else{
 
   //       console.log("next")
-  //      let url=`https://api.cricapi.com/v1/currentMatches?apikey=f7da89bf-c58e-4d8d-8fd5-adda566f0e76&offset=0&page=${this.state.page+1}&pageSize=6`;
+  //      let url=`https://api.cricapi.com/v1/currentMatches?apikey=f7da89bf-c58e-4d8d-8fd5-adda566f0e76&offset=0&page=${page+1}&pageSize=6`;
   //     let data= await fetch(url);
   //     let parsedData=await data.json();
   //     console.log(parsedData);
 
-  //     this.setState({
+  //     setState({
   //       articles: parsedData.data,
-  //       page: this.state.page+1
+  //       page: page+1
   //     })
   //   }
 
   //  }
-  render() {
-
+  
     return (
 
       <div className="container my-3 ">
         <h2 className="text-center">Top Matches</h2>
-      {this.state.loading && <Spinner/>}
+      {loading && <Spinner/>}
        
           <div className="row">
-          {this.state.articles.map((ele) => {
+          {articles.map((ele) => {
             return (
               <div className="col-md-3" matchid={ele.id}>
                 
@@ -322,8 +315,8 @@ export class Scores extends Component {
         
         
         {/* <div className="container d-flex justify-content-between">
-          <button disabled={this.state.page<=1} type="button" className="btn btn-dark" onClick={this.handlePreviousClick}>&larr; Previous</button>
-          <button type="button" className="btn btn-dark" onClick={this.handleNextClick}>Next &rarr;</button>
+          <button disabled={page<=1} type="button" className="btn btn-dark" onClick={handlePreviousClick}>&larr; Previous</button>
+          <button type="button" className="btn btn-dark" onClick={handleNextClick}>Next &rarr;</button>
         </div> */}
 
 
@@ -331,6 +324,11 @@ export class Scores extends Component {
       </div>
     )
   }
-}
 
+ Scores.defaultProps={
+    type: 'live'
+  }
+ Scores.propTypes={
+    type: PropTypes.string,
+  }
 export default Scores

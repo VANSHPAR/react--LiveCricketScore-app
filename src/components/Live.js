@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component , useEffect, useState
+ } from 'react'
 import { useParams, useNavigate } from "react-router-dom";
 
-export default class Live extends Component {
- 
-  articles=[
+const Live = (props)=> {
+ console.log(useParams())
+ const data=[
    {
   "miniscore": {
     "inningsId": 2,
@@ -223,17 +224,19 @@ export default class Live extends Component {
 
 ]
 
-constructor() {
-    super();
-    console.log("constructor from scores")
-    this.state = {
-      articles: this.articles,
-      loading: false,
-    //  matchId: useParams()
-    }
-   }
+const [articles, setArticles] = useState(data)
+const [loading, setLoading] = useState(false)
+const [matchId,sematchId]=useState(useParams())
+
+
+// useEffect(() => {
+//   fetchMatches();
+
+  
+// }, [])
+
 //       componentDidMount() {
-//   this.fetchMatches();
+//   this.
 //   this.interval = setInterval(this.fetchMatches, 60000); // 1 minute
 // }
 
@@ -241,11 +244,11 @@ constructor() {
 //   clearInterval(this.interval);
 // }
 
-// fetchMatches = async () => {
+// const fetchMatches = async () => {
  
   
 //   try {
-//     let url = `https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/${this.state.matchId}/leanback`;
+//     let url = `https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/${matchId}/leanback`;
     
 //     let options = {
 //       method: "GET",
@@ -255,22 +258,21 @@ constructor() {
 //         "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
 //       }
 //     };
-//     this.setState({loading: true});
+//     setLoading(true)
 //     let data = await fetch(url, options);
 //     console.log(data);
 //     let parsedData = await data.json();
-//     console.log(parsedData.typeMatches);
+//     //console.log(parsedData.typeMatches);
     
-//     this.setState({ articles: parsedData.typeMatches ,
-//       loading: false
-//     });
-//     console.log(this.state.articles);
+//    setArticles(parsedData)
+//    setLoading(false)
+//     console.log(articles);
 //   } catch (err) {
 //     console.error("API error:", err);
 //   }
 // }
 
-  render() {
+  
     
 
 
@@ -285,13 +287,13 @@ constructor() {
                   <div className="card-body">
                     
                     {/* <img src={`https://cricbuzz-cricket.p.rapidapi.com/photos/v1/index?lastId=${url1}`}  className="img-fluid" />  */}
-                    <span > {this.state.articles[0].miniscore.matchScoreDetails.inningsScoreList[0]?.batTeamName}     {this.state.articles[0].miniscore.matchScoreDetails.inningsScoreList[0]?.score}/{this.state.articles[0].miniscore.matchScoreDetails.inningsScoreList[0]?.wickets} ({this.state.articles[0].miniscore.matchScoreDetails.inningsScoreList[0]?.overs})</span>
+                    <span > {articles[0].miniscore.matchScoreDetails.inningsScoreList[0]?.batTeamName}     {articles[0].miniscore.matchScoreDetails.inningsScoreList[0]?.score}/{articles[0].miniscore.matchScoreDetails.inningsScoreList[0]?.wickets} ({articles[0].miniscore.matchScoreDetails.inningsScoreList[0]?.overs})</span>
                     <br />
                     <br />
                     {/* <img src={`https://cricbuzz-cricket.p.rapidapi.com/photos/v1/index?lastId=${url2}`} className="img-fluid"/> */}
-                    <span > {this.state.articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.batTeamName}     {this.state.articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.score}/{this.state.articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.wickets} ({this.state.articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.overs})</span>
-                    <p className="text-muted">TAR ({this.state.articles[0].miniscore.target})          CRR ({this.state.articles[0].miniscore.currentRunRate})          REQ ({this.state.articles[0].miniscore.requiredRunRate})          PSHIP {this.state.articles[0].miniscore.partnerShip.runs}({this.state.articles[0].miniscore.partnerShip.balls})</p>
-                     <p className="card-text text-info-emphasis">{this.state.articles[0].miniscore.matchScoreDetails?.customStatus}</p>
+                    <span > {articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.batTeamName}     {articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.score}/{articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.wickets} ({articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.overs})</span>
+                    <p className="text-muted">TAR ({articles[0].miniscore.target})          CRR ({articles[0].miniscore.currentRunRate})          REQ ({articles[0].miniscore.requiredRunRate})          PSHIP {articles[0].miniscore.partnerShip.runs}({articles[0].miniscore.partnerShip.balls})</p>
+                     <p className="card-text text-info-emphasis">{articles[0].miniscore.matchScoreDetails?.customStatus}</p>
                     {/*<Link to="/detail" className="btn btn-sm btn-primary" >Read More</Link> */}
                   </div>
               </div>
@@ -309,22 +311,22 @@ constructor() {
   </thead>
   <tbody>
     <tr>
-      <th scope="row">{this.state.articles[0].miniscore.batsmanStriker.batName}</th>
+      <th scope="row">{articles[0].miniscore.batsmanStriker.batName}</th>
       
-      <td>{this.state.articles[0].miniscore.batsmanStriker.batRuns}</td>
-      <td>{this.state.articles[0].miniscore.batsmanStriker.batBalls}</td>
-      <td>{this.state.articles[0].miniscore.batsmanStriker.batFours}</td>
-      <td>{this.state.articles[0].miniscore.batsmanStriker.batSixes}</td>
-      <td>{this.state.articles[0].miniscore.batsmanStriker.batStrikeRate}</td>
+      <td>{articles[0].miniscore.batsmanStriker.batRuns}</td>
+      <td>{articles[0].miniscore.batsmanStriker.batBalls}</td>
+      <td>{articles[0].miniscore.batsmanStriker.batFours}</td>
+      <td>{articles[0].miniscore.batsmanStriker.batSixes}</td>
+      <td>{articles[0].miniscore.batsmanStriker.batStrikeRate}</td>
     </tr>
     <tr>
-     <th scope="row">{this.state.articles[0].miniscore.batsmanNonStriker.batName}</th>
+     <th scope="row">{articles[0].miniscore.batsmanNonStriker.batName}</th>
       
-      <td>{this.state.articles[0].miniscore.batsmanNonStriker.batRuns}</td>
-      <td>{this.state.articles[0].miniscore.batsmanNonStriker.batBalls}</td>
-      <td>{this.state.articles[0].miniscore.batsmanNonStriker.batFours}</td>
-      <td>{this.state.articles[0].miniscore.batsmanNonStriker.batSixes}</td>
-      <td>{this.state.articles[0].miniscore.batsmanNonStriker.batStrikeRate}</td>
+      <td>{articles[0].miniscore.batsmanNonStriker.batRuns}</td>
+      <td>{articles[0].miniscore.batsmanNonStriker.batBalls}</td>
+      <td>{articles[0].miniscore.batsmanNonStriker.batFours}</td>
+      <td>{articles[0].miniscore.batsmanNonStriker.batSixes}</td>
+      <td>{articles[0].miniscore.batsmanNonStriker.batStrikeRate}</td>
     </tr>
    
   </tbody>
@@ -341,19 +343,19 @@ constructor() {
   </thead>
   <tbody>
     <tr>
-      <th scope="row">{this.state.articles[0].miniscore.bowlerStriker.bowlName}</th>
-      <td>{this.state.articles[0].miniscore.bowlerStriker.bowlOvs}</td>
-      <td>{this.state.articles[0].miniscore.bowlerStriker.bowlMaidens}</td>
-      <td>{this.state.articles[0].miniscore.bowlerStriker.bowlRuns}</td>
-      <td>{this.state.articles[0].miniscore.bowlerStriker.bowlWkts}</td>
+      <th scope="row">{articles[0].miniscore.bowlerStriker.bowlName}</th>
+      <td>{articles[0].miniscore.bowlerStriker.bowlOvs}</td>
+      <td>{articles[0].miniscore.bowlerStriker.bowlMaidens}</td>
+      <td>{articles[0].miniscore.bowlerStriker.bowlRuns}</td>
+      <td>{articles[0].miniscore.bowlerStriker.bowlWkts}</td>
       
     </tr>
     <tr>
-         <th scope="row">{this.state.articles[0].miniscore.bowlerNonStriker.bowlName}</th>
-      <td>{this.state.articles[0].miniscore.bowlerNonStriker.bowlOvs}</td>
-      <td>{this.state.articles[0].miniscore.bowlerNonStriker.bowlMaidens}</td>
-      <td>{this.state.articles[0].miniscore.bowlerNonStriker.bowlRuns}</td>
-      <td>{this.state.articles[0].miniscore.bowlerNonStriker.bowlWkts}</td>
+         <th scope="row">{articles[0].miniscore.bowlerNonStriker.bowlName}</th>
+      <td>{articles[0].miniscore.bowlerNonStriker.bowlOvs}</td>
+      <td>{articles[0].miniscore.bowlerNonStriker.bowlMaidens}</td>
+      <td>{articles[0].miniscore.bowlerNonStriker.bowlRuns}</td>
+      <td>{articles[0].miniscore.bowlerNonStriker.bowlWkts}</td>
     </tr>
   
   </tbody>
@@ -362,4 +364,5 @@ constructor() {
       </div>
     )
   }
-}
+  export default Live
+

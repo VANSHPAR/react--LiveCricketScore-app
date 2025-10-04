@@ -28,11 +28,11 @@ export default class App extends Component {
                  <Route exact path="/recent" element={<Scores key="recent" type="recent"/>} />
                  <Route exact path="/upcoming" element={<Scores key="upcoming" type="upcoming"/>} />
                  <Route exact path="/about" element={<About />} />
-                 <Route  path="/detail/:matchId" element={<Detail />} >
+                 <Route  path="detail/:matchId" element={<Detail />} >
                  <Route index element={<Live />}/>
-                 <Route  path="live/:matchId" element={<Live />} />
-                <Route  path="hscorecard/:matchId" element={<Hscorecard />} />
-                 <Route  path="matchinfo/:matchId" element={<Matchinfo />} />
+                 <Route  path="live" element={<Live />} />
+                <Route  path="hscorecard" element={<Hscorecard />} />
+                 <Route  path="matchinfo" element={<Matchinfo />} />
                  </Route>
                  
        
