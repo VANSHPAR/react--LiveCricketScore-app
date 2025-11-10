@@ -1,1695 +1,1714 @@
 import React, { Component , useState, useEffect } from 'react'
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, data } from "react-router-dom";
+import Spinner from './Spinner'
 
 const Hscorecard = (props)=> {
-  const data = [
-    {
-      "scoreCard": [
-        {
-          "matchId": 40381,
-          "inningsId": 1,
-          "timeScore": 1640309044000,
-          "batTeamDetails": {
-            "batTeamId": 27,
-            "batTeamName": "Ireland",
-            "batTeamShortName": "IRE",
-            "batsmenData": {
-              "bat_5": {
-                "batId": 6471,
-                "batName": "Getkate",
-                "batShortName": "",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 5,
-                "balls": 10,
-                "dots": 0,
-                "fours": 0,
-                "sixes": 0,
-                "mins": 0,
-                "strikeRate": 50,
-                "outDesc": "c Ritwik Behera       b Vatsal Vaghela",
-                "bowlerId": 22531,
-                "fielderId1": 22891,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 0,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 0,
-                "sixers": 0,
-                "wicketCode": "CAUGHT"
-              },
-              "bat_2": {
-                "batId": 6710,
-                "batName": "Balbirnie",
-                "batShortName": "",
-                "isCaptain": true,
-                "isKeeper": false,
-                "runs": 10,
-                "balls": 5,
-                "dots": 0,
-                "fours": 0,
-                "sixes": 0,
-                "mins": 0,
-                "strikeRate": 200,
-                "outDesc": "c Sushant Modani       b Netravalkar",
-                "bowlerId": 9748,
-                "fielderId1": 20217,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 0,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 2,
-                "sixers": 0,
-                "wicketCode": "CAUGHT"
-              },
-              "bat_10": {
-                "batId": 10451,
-                "batName": "Barry McCarthy",
-                "batShortName": "",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 0,
-                "balls": 1,
-                "dots": 0,
-                "fours": 0,
-                "sixes": 0,
-                "mins": 0,
-                "strikeRate": 0,
-                "outDesc": "run out (Monank Patel) ",
-                "bowlerId": 0,
-                "fielderId1": 14732,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 0,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 0,
-                "sixers": 0,
-                "wicketCode": "RUNOUT"
-              },
-              "bat_7": {
-                "batId": 11129,
-                "batName": "William McClintock",
-                "batShortName": "",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 1,
-                "balls": 3,
-                "dots": 0,
-                "fours": 0,
-                "sixes": 0,
-                "mins": 0,
-                "strikeRate": 33.33,
-                "outDesc": "c Marty Kain       b Nisarg Patel",
-                "bowlerId": 15475,
-                "fielderId1": 10699,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 0,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 0,
-                "sixers": 0,
-                "wicketCode": "CAUGHT"
-              },
-              "bat_1": {
-                "batId": 1114,
-                "batName": "Stirling",
-                "batShortName": "",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 5,
-                "balls": 5,
-                "dots": 0,
-                "fours": 0,
-                "sixes": 0,
-                "mins": 0,
-                "strikeRate": 100,
-                "outDesc": "lbw       b Nisarg Patel",
-                "bowlerId": 15475,
-                "fielderId1": 0,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 0,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 1,
-                "sixers": 0,
-                "wicketCode": "LBW"
-              },
-              "bat_8": {
-                "batId": 10449,
-                "batName": "Mark Adair",
-                "batShortName": "",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 3,
-                "balls": 4,
-                "dots": 0,
-                "fours": 0,
-                "sixes": 0,
-                "mins": 0,
-                "strikeRate": 75,
-                "outDesc": "       b Netravalkar",
-                "bowlerId": 9748,
-                "fielderId1": 0,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 0,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 0,
-                "sixers": 0,
-                "wicketCode": "BOWLED"
-              },
-              "bat_3": {
-                "batId": 11131,
-                "batName": "Lorcan Tucker",
-                "batShortName": "",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 84,
-                "balls": 56,
-                "dots": 0,
-                "fours": 0,
-                "sixes": 0,
-                "mins": 0,
-                "strikeRate": 150,
-                "outDesc": "       b Netravalkar",
-                "bowlerId": 9748,
-                "fielderId1": 0,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 0,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 9,
-                "sixers": 3,
-                "wicketCode": "BOWLED"
-              },
-              "bat_9": {
-                "batId": 12769,
-                "batName": "Simi Singh",
-                "batShortName": "",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 13,
-                "balls": 11,
-                "dots": 0,
-                "fours": 0,
-                "sixes": 0,
-                "mins": 0,
-                "strikeRate": 118.18,
-                "outDesc": "c Ali Khan       b Yasir Mohammad",
-                "bowlerId": 22901,
-                "fielderId1": 11450,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 0,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 1,
-                "sixers": 0,
-                "wicketCode": "CAUGHT"
-              },
-              "bat_6": {
-                "batId": 13309,
-                "batName": "Neil Rock",
-                "batShortName": "",
-                "isCaptain": false,
-                "isKeeper": true,
-                "runs": 4,
-                "balls": 5,
-                "dots": 0,
-                "fours": 0,
-                "sixes": 0,
-                "mins": 0,
-                "strikeRate": 80,
-                "outDesc": "c Ritwik Behera       b Vatsal Vaghela",
-                "bowlerId": 22531,
-                "fielderId1": 22891,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 0,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 0,
-                "sixers": 0,
-                "wicketCode": "CAUGHT"
-              },
-              "bat_4": {
-                "batId": 18143,
-                "batName": "Curtis Campher",
-                "batShortName": "",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 17,
-                "balls": 11,
-                "dots": 0,
-                "fours": 0,
-                "sixes": 0,
-                "mins": 0,
-                "strikeRate": 154.55,
-                "outDesc": "c Marty Kain       b Yasir Mohammad",
-                "bowlerId": 22901,
-                "fielderId1": 10699,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 0,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 2,
-                "sixers": 1,
-                "wicketCode": "CAUGHT"
-              },
-              "bat_11": {
-                "batId": 11124,
-                "batName": "Benjamin White",
-                "batShortName": "",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 2,
-                "balls": 2,
-                "dots": 0,
-                "fours": 0,
-                "sixes": 0,
-                "mins": 0,
-                "strikeRate": 100,
-                "outDesc": "not out",
-                "bowlerId": 0,
-                "fielderId1": 0,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 0,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 0,
-                "sixers": 0,
-                "wicketCode": ""
-              }
-            }
-          },
-          "bowlTeamDetails": {
-            "bowlTeamId": 15,
-            "bowlTeamName": "United States",
-            "bowlTeamShortName": "USA",
-            "bowlersData": {
-              "bowl_1": {
-                "bowlerId": 15475,
-                "bowlName": "Nisarg Patel",
-                "bowlShortName": "",
-                "isCaptain": false,
-                "isKeeper": false,
-                "overs": 4,
-                "maidens": 0,
-                "runs": 29,
-                "wickets": 2,
-                "economy": 7.2,
-                "no_balls": 0,
-                "wides": 0,
-                "dots": 0,
-                "balls": 0,
-                "runsPerBall": 0
-              },
-              "bowl_4": {
-                "bowlerId": 22901,
-                "bowlName": "Yasir Mohammad",
-                "bowlShortName": "",
-                "isCaptain": false,
-                "isKeeper": false,
-                "overs": 4,
-                "maidens": 0,
-                "runs": 32,
-                "wickets": 2,
-                "economy": 8,
-                "no_balls": 0,
-                "wides": 5,
-                "dots": 0,
-                "balls": 0,
-                "runsPerBall": 0
-              },
-              "bowl_6": {
-                "bowlerId": 22891,
-                "bowlName": "Ritwik Behera",
-                "bowlShortName": "",
-                "isCaptain": false,
-                "isKeeper": false,
-                "overs": 1,
-                "maidens": 0,
-                "runs": 5,
-                "wickets": 0,
-                "economy": 5,
-                "no_balls": 0,
-                "wides": 0,
-                "dots": 0,
-                "balls": 0,
-                "runsPerBall": 0
-              },
-              "bowl_5": {
-                "bowlerId": 22531,
-                "bowlName": "Vatsal Vaghela",
-                "bowlShortName": "",
-                "isCaptain": false,
-                "isKeeper": false,
-                "overs": 3,
-                "maidens": 0,
-                "runs": 16,
-                "wickets": 2,
-                "economy": 5.3,
-                "no_balls": 0,
-                "wides": 0,
-                "dots": 0,
-                "balls": 0,
-                "runsPerBall": 0
-              },
-              "bowl_3": {
-                "bowlerId": 11450,
-                "bowlName": "Ali Khan",
-                "bowlShortName": "",
-                "isCaptain": false,
-                "isKeeper": false,
-                "overs": 3,
-                "maidens": 0,
-                "runs": 34,
-                "wickets": 0,
-                "economy": 11.3,
-                "no_balls": 0,
-                "wides": 0,
-                "dots": 0,
-                "balls": 0,
-                "runsPerBall": 0
-              },
-              "bowl_2": {
-                "bowlerId": 9748,
-                "bowlName": "Netravalkar",
-                "bowlShortName": "",
-                "isCaptain": false,
-                "isKeeper": false,
-                "overs": 3.5,
-                "maidens": 0,
-                "runs": 33,
-                "wickets": 3,
-                "economy": 8.6,
-                "no_balls": 0,
-                "wides": 0,
-                "dots": 0,
-                "balls": 0,
-                "runsPerBall": 0
-              }
-            }
-          },
-          "scoreDetails": {
-            "ballNbr": 113,
-            "isDeclared": false,
-            "isFollowOn": false,
-            "overs": 18.5,
-            "revisedOvers": 0,
-            "runRate": 7.96,
-            "runs": 150,
-            "wickets": 10,
-            "runsPerBall": 0.81
-          },
-          "extrasData": {
-            "noBalls": 0,
-            "total": 6,
-            "byes": 0,
-            "penalty": 0,
-            "wides": 5,
-            "legByes": 1
-          },
-          "ppData": {
-            "pp_1": {
-              "ppId": 27,
-              "ppOversFrom": 0.1,
-              "ppOversTo": 6,
-              "ppType": "mandatory",
-              "runsScored": 59
-            }
-          },
-          "wicketsData": {
-            "wkt_8": {
-              "batId": 12769,
-              "batName": "Simi Singh",
-              "wktNbr": 8,
-              "wktOver": 16.5,
-              "wktRuns": 128,
-              "ballNbr": 165
-            },
-            "wkt_2": {
-              "batId": 6710,
-              "batName": "Balbirnie",
-              "wktNbr": 2,
-              "wktOver": 1.6,
-              "wktRuns": 20,
-              "ballNbr": 16
-            },
-            "wkt_9": {
-              "batId": 10451,
-              "batName": "Barry McCarthy",
-              "wktNbr": 9,
-              "wktOver": 17.3,
-              "wktRuns": 134,
-              "ballNbr": 173
-            },
-            "wkt_1": {
-              "batId": 1114,
-              "batName": "Stirling",
-              "wktNbr": 1,
-              "wktOver": 0.6,
-              "wktRuns": 6,
-              "ballNbr": 6
-            },
-            "wkt_6": {
-              "batId": 11129,
-              "batName": "William McClintock",
-              "wktNbr": 6,
-              "wktOver": 12.4,
-              "wktRuns": 96,
-              "ballNbr": 124
-            },
-            "wkt_10": {
-              "batId": 11131,
-              "batName": "Lorcan Tucker",
-              "wktNbr": 10,
-              "wktOver": 18.5,
-              "wktRuns": 150,
-              "ballNbr": 185
-            },
-            "wkt_4": {
-              "batId": 6471,
-              "batName": "Getkate",
-              "wktNbr": 4,
-              "wktOver": 9.5,
-              "wktRuns": 83,
-              "ballNbr": 95
-            },
-            "wkt_5": {
-              "batId": 13309,
-              "batName": "Neil Rock",
-              "wktNbr": 5,
-              "wktOver": 11.4,
-              "wktRuns": 92,
-              "ballNbr": 114
-            },
-            "wkt_7": {
-              "batId": 10449,
-              "batName": "Mark Adair",
-              "wktNbr": 7,
-              "wktOver": 13.5,
-              "wktRuns": 102,
-              "ballNbr": 135
-            },
-            "wkt_3": {
-              "batId": 18143,
-              "batName": "Curtis Campher",
-              "wktNbr": 3,
-              "wktOver": 6.1,
-              "wktRuns": 59,
-              "ballNbr": 61
-            }
-          },
-          "partnershipsData": {
-            "pat_10": {
-              "bat1Id": 11131,
-              "bat1Name": "Lorcan Tucker",
-              "bat1Runs": 14,
-              "bat1fours": 2,
-              "bat1sixes": 1,
-              "bat2Id": 11124,
-              "bat2Name": "Benjamin White",
-              "bat2Runs": 2,
-              "bat2fours": 0,
-              "bat2sixes": 0,
-              "totalRuns": 16,
-              "totalBalls": 8,
-              "bat1balls": 0,
-              "bat2balls": 0,
-              "bat1Ones": 0,
-              "bat1Twos": 0,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 0,
-              "bat1Sixers": 0,
-              "bat2Ones": 0,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 0,
-              "bat2Sixers": 0
-            },
-            "pat_1": {
-              "bat1Id": 1114,
-              "bat1Name": "Stirling",
-              "bat1Runs": 5,
-              "bat1fours": 1,
-              "bat1sixes": 0,
-              "bat2Id": 6710,
-              "bat2Name": "Balbirnie",
-              "bat2Runs": 1,
-              "bat2fours": 0,
-              "bat2sixes": 0,
-              "totalRuns": 6,
-              "totalBalls": 6,
-              "bat1balls": 0,
-              "bat2balls": 0,
-              "bat1Ones": 0,
-              "bat1Twos": 0,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 0,
-              "bat1Sixers": 0,
-              "bat2Ones": 0,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 0,
-              "bat2Sixers": 0
-            },
-            "pat_6": {
-              "bat1Id": 11131,
-              "bat1Name": "Lorcan Tucker",
-              "bat1Runs": 3,
-              "bat1fours": 0,
-              "bat1sixes": 0,
-              "bat2Id": 11129,
-              "bat2Name": "William McClintock",
-              "bat2Runs": 1,
-              "bat2fours": 0,
-              "bat2sixes": 0,
-              "totalRuns": 4,
-              "totalBalls": 6,
-              "bat1balls": 0,
-              "bat2balls": 0,
-              "bat1Ones": 0,
-              "bat1Twos": 0,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 0,
-              "bat1Sixers": 0,
-              "bat2Ones": 0,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 0,
-              "bat2Sixers": 0
-            },
-            "pat_9": {
-              "bat1Id": 11131,
-              "bat1Name": "Lorcan Tucker",
-              "bat1Runs": 6,
-              "bat1fours": 0,
-              "bat1sixes": 1,
-              "bat2Id": 10451,
-              "bat2Name": "McCarthy",
-              "bat2Runs": 0,
-              "bat2fours": 0,
-              "bat2sixes": 0,
-              "totalRuns": 6,
-              "totalBalls": 4,
-              "bat1balls": 0,
-              "bat2balls": 0,
-              "bat1Ones": 0,
-              "bat1Twos": 0,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 0,
-              "bat1Sixers": 0,
-              "bat2Ones": 0,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 0,
-              "bat2Sixers": 0
-            },
-            "pat_2": {
-              "bat1Id": 11131,
-              "bat1Name": "Lorcan Tucker",
-              "bat1Runs": 5,
-              "bat1fours": 1,
-              "bat1sixes": 0,
-              "bat2Id": 6710,
-              "bat2Name": "Balbirnie",
-              "bat2Runs": 9,
-              "bat2fours": 2,
-              "bat2sixes": 0,
-              "totalRuns": 14,
-              "totalBalls": 6,
-              "bat1balls": 0,
-              "bat2balls": 0,
-              "bat1Ones": 0,
-              "bat1Twos": 0,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 0,
-              "bat1Sixers": 0,
-              "bat2Ones": 0,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 0,
-              "bat2Sixers": 0
-            },
-            "pat_5": {
-              "bat1Id": 11131,
-              "bat1Name": "Lorcan Tucker",
-              "bat1Runs": 5,
-              "bat1fours": 0,
-              "bat1sixes": 0,
-              "bat2Id": 13309,
-              "bat2Name": "Neil Rock",
-              "bat2Runs": 4,
-              "bat2fours": 0,
-              "bat2sixes": 0,
-              "totalRuns": 9,
-              "totalBalls": 11,
-              "bat1balls": 0,
-              "bat2balls": 0,
-              "bat1Ones": 0,
-              "bat1Twos": 0,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 0,
-              "bat1Sixers": 0,
-              "bat2Ones": 0,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 0,
-              "bat2Sixers": 0
-            },
-            "pat_3": {
-              "bat1Id": 11131,
-              "bat1Name": "Lorcan Tucker",
-              "bat1Runs": 22,
-              "bat1fours": 3,
-              "bat1sixes": 1,
-              "bat2Id": 18143,
-              "bat2Name": "Curtis Campher",
-              "bat2Runs": 17,
-              "bat2fours": 2,
-              "bat2sixes": 1,
-              "totalRuns": 39,
-              "totalBalls": 25,
-              "bat1balls": 0,
-              "bat2balls": 0,
-              "bat1Ones": 0,
-              "bat1Twos": 0,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 0,
-              "bat1Sixers": 0,
-              "bat2Ones": 0,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 0,
-              "bat2Sixers": 0
-            },
-            "pat_8": {
-              "bat1Id": 11131,
-              "bat1Name": "Lorcan Tucker",
-              "bat1Runs": 7,
-              "bat1fours": 0,
-              "bat1sixes": 0,
-              "bat2Id": 12769,
-              "bat2Name": "Simi Singh",
-              "bat2Runs": 13,
-              "bat2fours": 1,
-              "bat2sixes": 0,
-              "totalRuns": 26,
-              "totalBalls": 18,
-              "bat1balls": 0,
-              "bat2balls": 0,
-              "bat1Ones": 0,
-              "bat1Twos": 0,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 0,
-              "bat1Sixers": 0,
-              "bat2Ones": 0,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 0,
-              "bat2Sixers": 0
-            },
-            "pat_4": {
-              "bat1Id": 11131,
-              "bat1Name": "Lorcan Tucker",
-              "bat1Runs": 19,
-              "bat1fours": 3,
-              "bat1sixes": 0,
-              "bat2Id": 6471,
-              "bat2Name": "Getkate",
-              "bat2Runs": 5,
-              "bat2fours": 0,
-              "bat2sixes": 0,
-              "totalRuns": 24,
-              "totalBalls": 22,
-              "bat1balls": 0,
-              "bat2balls": 0,
-              "bat1Ones": 0,
-              "bat1Twos": 0,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 0,
-              "bat1Sixers": 0,
-              "bat2Ones": 0,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 0,
-              "bat2Sixers": 0
-            },
-            "pat_7": {
-              "bat1Id": 11131,
-              "bat1Name": "Lorcan Tucker",
-              "bat1Runs": 3,
-              "bat1fours": 0,
-              "bat1sixes": 0,
-              "bat2Id": 10449,
-              "bat2Name": "Mark Adair",
-              "bat2Runs": 3,
-              "bat2fours": 0,
-              "bat2sixes": 0,
-              "totalRuns": 6,
-              "totalBalls": 7,
-              "bat1balls": 0,
-              "bat2balls": 0,
-              "bat1Ones": 0,
-              "bat1Twos": 0,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 0,
-              "bat1Sixers": 0,
-              "bat2Ones": 0,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 0,
-              "bat2Sixers": 0
-            }
-          }
-        },
-        {
-          "matchId": 40381,
-          "inningsId": 2,
-          "timeScore": 1640316185000,
-          "batTeamDetails": {
-            "batTeamId": 15,
-            "batTeamName": "United States",
-            "batTeamShortName": "USA",
-            "batsmenData": {
-              "bat_5": {
-                "batId": 20217,
-                "batName": "Sushant Modani",
-                "batShortName": "Sushant Modani",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 27,
-                "balls": 16,
-                "dots": 3,
-                "fours": 1,
-                "sixes": 2,
-                "mins": 22,
-                "strikeRate": 168.75,
-                "outDesc": "c Lorcan Tucker       b Curtis Campher",
-                "bowlerId": 18143,
-                "fielderId1": 11131,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 9,
-                "twos": 1,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 1,
-                "sixers": 2,
-                "wicketCode": "CAUGHT"
-              },
-              "bat_2": {
-                "batId": 22896,
-                "batName": "Ryan Scott",
-                "batShortName": "Ryan Scott",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 11,
-                "balls": 11,
-                "dots": 7,
-                "fours": 2,
-                "sixes": 0,
-                "mins": 11,
-                "strikeRate": 100,
-                "outDesc": "run out (Curtis Campher) ",
-                "bowlerId": 0,
-                "fielderId1": 18143,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 1,
-                "twos": 1,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 2,
-                "sixers": 0,
-                "wicketCode": "RUNOUT"
-              },
-              "bat_10": {
-                "batId": 22531,
-                "batName": "Vatsal Vaghela",
-                "batShortName": "Vatsal Vaghela",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 0,
-                "balls": 0,
-                "dots": 0,
-                "fours": 0,
-                "sixes": 0,
-                "mins": 0,
-                "strikeRate": 0,
-                "outDesc": "",
-                "bowlerId": 0,
-                "fielderId1": 0,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 0,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 0,
-                "sixers": 0,
-                "wicketCode": ""
-              },
-              "bat_7": {
-                "batId": 15475,
-                "batName": "Nisarg Patel",
-                "batShortName": "Nisarg Patel",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 10,
-                "balls": 6,
-                "dots": 2,
-                "fours": 2,
-                "sixes": 0,
-                "mins": 14,
-                "strikeRate": 166.67,
-                "outDesc": "not out",
-                "bowlerId": 0,
-                "fielderId1": 0,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 2,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 2,
-                "sixers": 0,
-                "wicketCode": ""
-              },
-              "bat_1": {
-                "batId": 22891,
-                "batName": "Ritwik Behera",
-                "batShortName": "Ritwik Behera",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 16,
-                "balls": 23,
-                "dots": 13,
-                "fours": 1,
-                "sixes": 0,
-                "mins": 31,
-                "strikeRate": 69.57,
-                "outDesc": "c Getkate       b Mark Adair",
-                "bowlerId": 10449,
-                "fielderId1": 6471,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 6,
-                "twos": 3,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 1,
-                "sixers": 0,
-                "wicketCode": "CAUGHT"
-              },
-              "bat_8": {
-                "batId": 22901,
-                "batName": "Yasir Mohammad",
-                "batShortName": "Yasir Mohammad",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 0,
-                "balls": 2,
-                "dots": 2,
-                "fours": 0,
-                "sixes": 0,
-                "mins": 1,
-                "strikeRate": 0,
-                "outDesc": "   c and b Curtis Campher",
-                "bowlerId": 18143,
-                "fielderId1": 0,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 0,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 0,
-                "sixers": 0,
-                "wicketCode": "CAUGHTBOWLED"
-              },
-              "bat_3": {
-                "batId": 14732,
-                "batName": "Monank Patel",
-                "batShortName": "Monank Patel",
-                "isCaptain": true,
-                "isKeeper": true,
-                "runs": 26,
-                "balls": 27,
-                "dots": 12,
-                "fours": 2,
-                "sixes": 1,
-                "mins": 35,
-                "strikeRate": 96.3,
-                "outDesc": "c Mark Adair       b Benjamin White",
-                "bowlerId": 11124,
-                "fielderId1": 10449,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 12,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 2,
-                "sixers": 1,
-                "wicketCode": "CAUGHT"
-              },
-              "bat_9": {
-                "batId": 9748,
-                "batName": "Saurabh Netravalkar",
-                "batShortName": "Netravalkar",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 5,
-                "balls": 6,
-                "dots": 3,
-                "fours": 0,
-                "sixes": 0,
-                "mins": 11,
-                "strikeRate": 83.33,
-                "outDesc": "not out",
-                "bowlerId": 0,
-                "fielderId1": 0,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 1,
-                "twos": 2,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 0,
-                "sixers": 0,
-                "wicketCode": ""
-              },
-              "bat_6": {
-                "batId": 10699,
-                "batName": "Marty Kain",
-                "batShortName": "Marty Kain",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 11,
-                "balls": 11,
-                "dots": 5,
-                "fours": 1,
-                "sixes": 0,
-                "mins": 18,
-                "strikeRate": 100,
-                "outDesc": "       b Curtis Campher",
-                "bowlerId": 18143,
-                "fielderId1": 0,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 3,
-                "twos": 2,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 1,
-                "sixers": 0,
-                "wicketCode": "BOWLED"
-              },
-              "bat_4": {
-                "batId": 12788,
-                "batName": "Gajanand Singh",
-                "batShortName": "Gajanand Singh",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 22,
-                "balls": 20,
-                "dots": 6,
-                "fours": 1,
-                "sixes": 1,
-                "mins": 28,
-                "strikeRate": 110,
-                "outDesc": "lbw       b Curtis Campher",
-                "bowlerId": 18143,
-                "fielderId1": 0,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 12,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 1,
-                "sixers": 1,
-                "wicketCode": "LBW"
-              },
-              "bat_11": {
-                "batId": 11450,
-                "batName": "Ali Khan",
-                "batShortName": "Ali Khan",
-                "isCaptain": false,
-                "isKeeper": false,
-                "runs": 0,
-                "balls": 0,
-                "dots": 0,
-                "fours": 0,
-                "sixes": 0,
-                "mins": 0,
-                "strikeRate": 0,
-                "outDesc": "",
-                "bowlerId": 0,
-                "fielderId1": 0,
-                "fielderId2": 0,
-                "fielderId3": 0,
-                "ones": 0,
-                "twos": 0,
-                "threes": 0,
-                "fives": 0,
-                "boundaries": 0,
-                "sixers": 0,
-                "wicketCode": ""
-              }
-            }
-          },
-          "bowlTeamDetails": {
-            "bowlTeamId": 27,
-            "bowlTeamName": "Ireland",
-            "bowlTeamShortName": "IRE",
-            "bowlersData": {
-              "bowl_1": {
-                "bowlerId": 10449,
-                "bowlName": "Mark Adair",
-                "bowlShortName": "Mark Adair",
-                "isCaptain": false,
-                "isKeeper": false,
-                "overs": 4,
-                "maidens": 0,
-                "runs": 25,
-                "wickets": 1,
-                "economy": 6.2,
-                "no_balls": 0,
-                "wides": 2,
-                "dots": 0,
-                "balls": 0,
-                "runsPerBall": 0
-              },
-              "bowl_4": {
-                "bowlerId": 12769,
-                "bowlName": "Simi Singh",
-                "bowlShortName": "Simi Singh",
-                "isCaptain": false,
-                "isKeeper": false,
-                "overs": 4,
-                "maidens": 0,
-                "runs": 31,
-                "wickets": 0,
-                "economy": 7.8,
-                "no_balls": 0,
-                "wides": 0,
-                "dots": 0,
-                "balls": 0,
-                "runsPerBall": 0
-              },
-              "bowl_6": {
-                "bowlerId": 1114,
-                "bowlName": "Paul Stirling",
-                "bowlShortName": "Stirling",
-                "isCaptain": false,
-                "isKeeper": false,
-                "overs": 1,
-                "maidens": 0,
-                "runs": 4,
-                "wickets": 0,
-                "economy": 4,
-                "no_balls": 0,
-                "wides": 0,
-                "dots": 0,
-                "balls": 0,
-                "runsPerBall": 0
-              },
-              "bowl_5": {
-                "bowlerId": 11124,
-                "bowlName": "Benjamin White",
-                "bowlShortName": "Benjamin White",
-                "isCaptain": false,
-                "isKeeper": false,
-                "overs": 3,
-                "maidens": 0,
-                "runs": 27,
-                "wickets": 1,
-                "economy": 9,
-                "no_balls": 1,
-                "wides": 2,
-                "dots": 0,
-                "balls": 0,
-                "runsPerBall": 0
-              },
-              "bowl_3": {
-                "bowlerId": 18143,
-                "bowlName": "Curtis Campher",
-                "bowlShortName": "Curtis Campher",
-                "isCaptain": false,
-                "isKeeper": false,
-                "overs": 4,
-                "maidens": 1,
-                "runs": 25,
-                "wickets": 4,
-                "economy": 6.2,
-                "no_balls": 1,
-                "wides": 1,
-                "dots": 0,
-                "balls": 0,
-                "runsPerBall": 0
-              },
-              "bowl_2": {
-                "bowlerId": 10451,
-                "bowlName": "Barry McCarthy",
-                "bowlShortName": "Barry McCarthy",
-                "isCaptain": false,
-                "isKeeper": false,
-                "overs": 4,
-                "maidens": 0,
-                "runs": 24,
-                "wickets": 0,
-                "economy": 6,
-                "no_balls": 0,
-                "wides": 1,
-                "dots": 0,
-                "balls": 0,
-                "runsPerBall": 0
-              }
-            }
-          },
-          "scoreDetails": {
-            "ballNbr": 120,
-            "isDeclared": false,
-            "isFollowOn": false,
-            "overs": 20,
-            "revisedOvers": 0,
-            "runRate": 7.05,
-            "runs": 141,
-            "wickets": 7,
-            "runsPerBall": 0.71
-          },
-          "extrasData": {
-            "noBalls": 2,
-            "total": 13,
-            "byes": 1,
-            "penalty": 0,
-            "wides": 6,
-            "legByes": 4
-          },
-          "ppData": {
-            "pp_1": {
-              "ppId": 28,
-              "ppOversFrom": 0.1,
-              "ppOversTo": 6,
-              "ppType": "mandatory",
-              "runsScored": 34
-            }
-          },
-          "wicketsData": {
-            "wkt_2": {
-              "batId": 22891,
-              "batName": "Ritwik Behera",
-              "wktNbr": 2,
-              "wktOver": 7.2,
-              "wktRuns": 40,
-              "ballNbr": 72
-            },
-            "wkt_1": {
-              "batId": 22896,
-              "batName": "Ryan Scott",
-              "wktNbr": 1,
-              "wktOver": 3,
-              "wktRuns": 20,
-              "ballNbr": 30
-            },
-            "wkt_6": {
-              "batId": 10699,
-              "batName": "Marty Kain",
-              "wktNbr": 6,
-              "wktOver": 17.4,
-              "wktRuns": 122,
-              "ballNbr": 174
-            },
-            "wkt_4": {
-              "batId": 12788,
-              "batName": "Gajanand Singh",
-              "wktNbr": 4,
-              "wktOver": 14.3,
-              "wktRuns": 89,
-              "ballNbr": 143
-            },
-            "wkt_5": {
-              "batId": 20217,
-              "batName": "Sushant Modani",
-              "wktNbr": 5,
-              "wktOver": 17.3,
-              "wktRuns": 122,
-              "ballNbr": 173
-            },
-            "wkt_7": {
-              "batId": 22901,
-              "batName": "Yasir Mohammad",
-              "wktNbr": 7,
-              "wktOver": 17.6,
-              "wktRuns": 123,
-              "ballNbr": 176
-            },
-            "wkt_3": {
-              "batId": 14732,
-              "batName": "Monank Patel",
-              "wktNbr": 3,
-              "wktOver": 11.4,
-              "wktRuns": 68,
-              "ballNbr": 114
-            }
-          },
-          "partnershipsData": {
-            "pat_1": {
-              "bat1Id": 22891,
-              "bat1Name": "Ritwik Behera",
-              "bat1Runs": 6,
-              "bat1fours": 0,
-              "bat1sixes": 0,
-              "bat2Id": 22896,
-              "bat2Name": "Ryan Scott",
-              "bat2Runs": 11,
-              "bat2fours": 2,
-              "bat2sixes": 0,
-              "totalRuns": 20,
-              "totalBalls": 18,
-              "bat1balls": 7,
-              "bat2balls": 11,
-              "bat1Ones": 2,
-              "bat1Twos": 2,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 0,
-              "bat1Sixers": 0,
-              "bat2Ones": 1,
-              "bat2Twos": 1,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 2,
-              "bat2Sixers": 0
-            },
-            "pat_6": {
-              "bat1Id": 10699,
-              "bat1Name": "Marty Kain",
-              "bat1Runs": 0,
-              "bat1fours": 0,
-              "bat1sixes": 0,
-              "bat2Id": 15475,
-              "bat2Name": "Nisarg Patel",
-              "bat2Runs": 0,
-              "bat2fours": 0,
-              "bat2sixes": 0,
-              "totalRuns": 0,
-              "totalBalls": 1,
-              "bat1balls": 1,
-              "bat2balls": 0,
-              "bat1Ones": 0,
-              "bat1Twos": 0,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 0,
-              "bat1Sixers": 0,
-              "bat2Ones": 0,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 0,
-              "bat2Sixers": 0
-            },
-            "pat_2": {
-              "bat1Id": 22891,
-              "bat1Name": "Ritwik Behera",
-              "bat1Runs": 10,
-              "bat1fours": 1,
-              "bat1sixes": 0,
-              "bat2Id": 14732,
-              "bat2Name": "Monank Patel",
-              "bat2Runs": 10,
-              "bat2fours": 1,
-              "bat2sixes": 0,
-              "totalRuns": 20,
-              "totalBalls": 26,
-              "bat1balls": 16,
-              "bat2balls": 10,
-              "bat1Ones": 4,
-              "bat1Twos": 1,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 1,
-              "bat1Sixers": 0,
-              "bat2Ones": 6,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 1,
-              "bat2Sixers": 0
-            },
-            "pat_5": {
-              "bat1Id": 10699,
-              "bat1Name": "Marty Kain",
-              "bat1Runs": 11,
-              "bat1fours": 1,
-              "bat1sixes": 0,
-              "bat2Id": 20217,
-              "bat2Name": "Sushant Modani",
-              "bat2Runs": 20,
-              "bat2fours": 1,
-              "bat2sixes": 2,
-              "totalRuns": 33,
-              "totalBalls": 19,
-              "bat1balls": 10,
-              "bat2balls": 9,
-              "bat1Ones": 3,
-              "bat1Twos": 2,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 1,
-              "bat1Sixers": 0,
-              "bat2Ones": 4,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 1,
-              "bat2Sixers": 2
-            },
-            "pat_3": {
-              "bat1Id": 12788,
-              "bat1Name": "Gajanand",
-              "bat1Runs": 8,
-              "bat1fours": 0,
-              "bat1sixes": 0,
-              "bat2Id": 14732,
-              "bat2Name": "Monank Patel",
-              "bat2Runs": 16,
-              "bat2fours": 1,
-              "bat2sixes": 1,
-              "totalRuns": 28,
-              "totalBalls": 27,
-              "bat1balls": 10,
-              "bat2balls": 17,
-              "bat1Ones": 8,
-              "bat1Twos": 0,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 0,
-              "bat1Sixers": 0,
-              "bat2Ones": 6,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 1,
-              "bat2Sixers": 1
-            },
-            "pat_8": {
-              "bat1Id": 9748,
-              "bat1Name": "Netravalkar",
-              "bat1Runs": 5,
-              "bat1fours": 0,
-              "bat1sixes": 0,
-              "bat2Id": 15475,
-              "bat2Name": "Nisarg Patel",
-              "bat2Runs": 10,
-              "bat2fours": 2,
-              "bat2sixes": 0,
-              "totalRuns": 18,
-              "totalBalls": 12,
-              "bat1balls": 6,
-              "bat2balls": 6,
-              "bat1Ones": 1,
-              "bat1Twos": 2,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 0,
-              "bat1Sixers": 0,
-              "bat2Ones": 2,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 2,
-              "bat2Sixers": 0
-            },
-            "pat_4": {
-              "bat1Id": 12788,
-              "bat1Name": "Gajanand",
-              "bat1Runs": 14,
-              "bat1fours": 1,
-              "bat1sixes": 1,
-              "bat2Id": 20217,
-              "bat2Name": "Sushant Modani",
-              "bat2Runs": 7,
-              "bat2fours": 0,
-              "bat2sixes": 0,
-              "totalRuns": 21,
-              "totalBalls": 17,
-              "bat1balls": 10,
-              "bat2balls": 7,
-              "bat1Ones": 4,
-              "bat1Twos": 0,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 1,
-              "bat1Sixers": 1,
-              "bat2Ones": 5,
-              "bat2Twos": 1,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 0,
-              "bat2Sixers": 0
-            },
-            "pat_7": {
-              "bat1Id": 22901,
-              "bat1Name": "Yasir Mohammad",
-              "bat1Runs": 0,
-              "bat1fours": 0,
-              "bat1sixes": 0,
-              "bat2Id": 15475,
-              "bat2Name": "Nisarg Patel",
-              "bat2Runs": 0,
-              "bat2fours": 0,
-              "bat2sixes": 0,
-              "totalRuns": 1,
-              "totalBalls": 2,
-              "bat1balls": 2,
-              "bat2balls": 0,
-              "bat1Ones": 0,
-              "bat1Twos": 0,
-              "bat1Threes": 0,
-              "bat1Fives": 0,
-              "bat1Boundaries": 0,
-              "bat1Sixers": 0,
-              "bat2Ones": 0,
-              "bat2Twos": 0,
-              "bat2Threes": 0,
-              "bat2Fives": 0,
-              "bat2Boundaries": 0,
-              "bat2Sixers": 0
-            }
-          }
-        }
-      ],
-      "matchHeader": {
-        "matchId": 40381,
-        "matchDescription": "2nd T20I",
-        "matchFormat": "T20",
-        "matchType": "International",
-        "complete": true,
-        "domestic": false,
-        "matchStartTimestamp": 1640304000000,
-        "matchCompleteTimestamp": 1640316253487,
-        "dayNight": true,
-        "year": 2021,
-        "state": "Complete",
-        "status": "United States opt to bowl",
-        "tossResults": {
-          "tossWinnerId": 15,
-          "tossWinnerName": "United States",
-          "decision": "Bowling"
-        },
-        "result": {
-          "resultType": "win",
-          "winningTeam": "Ireland",
-          "winningteamId": 27,
-          "winningMargin": 9,
-          "winByRuns": true,
-          "winByInnings": false
-        },
-        "revisedTarget": {
-          "reason": ""
-        },
-        "playersOfTheMatch": [
-          {
-            "id": 11131,
-            "name": "Lorcan Tucker",
-            "fullName": "Lorcan Tucker",
-            "nickName": "Lorcan Tucker",
-            "captain": false,
-            "keeper": false,
-            "substitute": false,
-            "teamName": "Ireland U19",
-            "faceImageId": 191070
-          }
-        ],
-        "playersOfTheSeries": [
-          {
-            "id": 11131,
-            "name": "Lorcan Tucker",
-            "fullName": "Lorcan Tucker",
-            "nickName": "Lorcan Tucker",
-            "captain": false,
-            "keeper": false,
-            "substitute": false,
-            "bowlingStyle": "Ireland U19",
-            "faceImageId": 191070
-          }
-        ],
-        "matchTeamInfo": [
-          {
-            "battingTeamId": 27,
-            "battingTeamShortName": "IRE",
-            "bowlingTeamId": 15,
-            "bowlingTeamShortName": "USA"
-          },
-          {
-            "battingTeamId": 15,
-            "battingTeamShortName": "USA",
-            "bowlingTeamId": 27,
-            "bowlingTeamShortName": "IRE"
-          }
-        ],
-        "isMatchNotCovered": false,
-        "team1": {
-          "id": 15,
-          "name": "United States",
-          "playerDetails": [],
-          "shortName": "USA"
-        },
-        "team2": {
-          "id": 27,
-          "name": "Ireland",
-          "playerDetails": [],
-          "shortName": "IRE"
-        },
-        "seriesDesc": "Ireland tour of USA, 2021",
-        "seriesId": 3866,
-        "seriesName": "Ireland tour of USA, 2021"
-      },
-      "isMatchComplete": true,
-      "status": "Ireland won by 9 runs",
-      "videos": [],
-      "responseLastUpdated": 1650587016
-    }
-  ]
-   const [articles, setarticles] = useState(data)
+  // const data = [
+  //   {
+  //     "scoreCard": [
+  //       {
+  //         "matchId": 40381,
+  //         "inningsId": 1,
+  //         "timeScore": 1640309044000,
+  //         "batTeamDetails": {
+  //           "batTeamId": 27,
+  //           "batTeamName": "Ireland",
+  //           "batTeamShortName": "IRE",
+  //           "batsmenData": {
+  //             "bat_5": {
+  //               "batId": 6471,
+  //               "batName": "Getkate",
+  //               "batShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 5,
+  //               "balls": 10,
+  //               "dots": 0,
+  //               "fours": 0,
+  //               "sixes": 0,
+  //               "mins": 0,
+  //               "strikeRate": 50,
+  //               "outDesc": "c Ritwik Behera       b Vatsal Vaghela",
+  //               "bowlerId": 22531,
+  //               "fielderId1": 22891,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 0,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 0,
+  //               "sixers": 0,
+  //               "wicketCode": "CAUGHT"
+  //             },
+  //             "bat_2": {
+  //               "batId": 6710,
+  //               "batName": "Balbirnie",
+  //               "batShortName": "",
+  //               "isCaptain": true,
+  //               "isKeeper": false,
+  //               "runs": 10,
+  //               "balls": 5,
+  //               "dots": 0,
+  //               "fours": 0,
+  //               "sixes": 0,
+  //               "mins": 0,
+  //               "strikeRate": 200,
+  //               "outDesc": "c Sushant Modani       b Netravalkar",
+  //               "bowlerId": 9748,
+  //               "fielderId1": 20217,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 0,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 2,
+  //               "sixers": 0,
+  //               "wicketCode": "CAUGHT"
+  //             },
+  //             "bat_10": {
+  //               "batId": 10451,
+  //               "batName": "Barry McCarthy",
+  //               "batShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 0,
+  //               "balls": 1,
+  //               "dots": 0,
+  //               "fours": 0,
+  //               "sixes": 0,
+  //               "mins": 0,
+  //               "strikeRate": 0,
+  //               "outDesc": "run out (Monank Patel) ",
+  //               "bowlerId": 0,
+  //               "fielderId1": 14732,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 0,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 0,
+  //               "sixers": 0,
+  //               "wicketCode": "RUNOUT"
+  //             },
+  //             "bat_7": {
+  //               "batId": 11129,
+  //               "batName": "William McClintock",
+  //               "batShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 1,
+  //               "balls": 3,
+  //               "dots": 0,
+  //               "fours": 0,
+  //               "sixes": 0,
+  //               "mins": 0,
+  //               "strikeRate": 33.33,
+  //               "outDesc": "c Marty Kain       b Nisarg Patel",
+  //               "bowlerId": 15475,
+  //               "fielderId1": 10699,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 0,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 0,
+  //               "sixers": 0,
+  //               "wicketCode": "CAUGHT"
+  //             },
+  //             "bat_1": {
+  //               "batId": 1114,
+  //               "batName": "Stirling",
+  //               "batShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 5,
+  //               "balls": 5,
+  //               "dots": 0,
+  //               "fours": 0,
+  //               "sixes": 0,
+  //               "mins": 0,
+  //               "strikeRate": 100,
+  //               "outDesc": "lbw       b Nisarg Patel",
+  //               "bowlerId": 15475,
+  //               "fielderId1": 0,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 0,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 1,
+  //               "sixers": 0,
+  //               "wicketCode": "LBW"
+  //             },
+  //             "bat_8": {
+  //               "batId": 10449,
+  //               "batName": "Mark Adair",
+  //               "batShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 3,
+  //               "balls": 4,
+  //               "dots": 0,
+  //               "fours": 0,
+  //               "sixes": 0,
+  //               "mins": 0,
+  //               "strikeRate": 75,
+  //               "outDesc": "       b Netravalkar",
+  //               "bowlerId": 9748,
+  //               "fielderId1": 0,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 0,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 0,
+  //               "sixers": 0,
+  //               "wicketCode": "BOWLED"
+  //             },
+  //             "bat_3": {
+  //               "batId": 11131,
+  //               "batName": "Lorcan Tucker",
+  //               "batShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 84,
+  //               "balls": 56,
+  //               "dots": 0,
+  //               "fours": 0,
+  //               "sixes": 0,
+  //               "mins": 0,
+  //               "strikeRate": 150,
+  //               "outDesc": "       b Netravalkar",
+  //               "bowlerId": 9748,
+  //               "fielderId1": 0,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 0,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 9,
+  //               "sixers": 3,
+  //               "wicketCode": "BOWLED"
+  //             },
+  //             "bat_9": {
+  //               "batId": 12769,
+  //               "batName": "Simi Singh",
+  //               "batShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 13,
+  //               "balls": 11,
+  //               "dots": 0,
+  //               "fours": 0,
+  //               "sixes": 0,
+  //               "mins": 0,
+  //               "strikeRate": 118.18,
+  //               "outDesc": "c Ali Khan       b Yasir Mohammad",
+  //               "bowlerId": 22901,
+  //               "fielderId1": 11450,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 0,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 1,
+  //               "sixers": 0,
+  //               "wicketCode": "CAUGHT"
+  //             },
+  //             "bat_6": {
+  //               "batId": 13309,
+  //               "batName": "Neil Rock",
+  //               "batShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": true,
+  //               "runs": 4,
+  //               "balls": 5,
+  //               "dots": 0,
+  //               "fours": 0,
+  //               "sixes": 0,
+  //               "mins": 0,
+  //               "strikeRate": 80,
+  //               "outDesc": "c Ritwik Behera       b Vatsal Vaghela",
+  //               "bowlerId": 22531,
+  //               "fielderId1": 22891,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 0,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 0,
+  //               "sixers": 0,
+  //               "wicketCode": "CAUGHT"
+  //             },
+  //             "bat_4": {
+  //               "batId": 18143,
+  //               "batName": "Curtis Campher",
+  //               "batShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 17,
+  //               "balls": 11,
+  //               "dots": 0,
+  //               "fours": 0,
+  //               "sixes": 0,
+  //               "mins": 0,
+  //               "strikeRate": 154.55,
+  //               "outDesc": "c Marty Kain       b Yasir Mohammad",
+  //               "bowlerId": 22901,
+  //               "fielderId1": 10699,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 0,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 2,
+  //               "sixers": 1,
+  //               "wicketCode": "CAUGHT"
+  //             },
+  //             "bat_11": {
+  //               "batId": 11124,
+  //               "batName": "Benjamin White",
+  //               "batShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 2,
+  //               "balls": 2,
+  //               "dots": 0,
+  //               "fours": 0,
+  //               "sixes": 0,
+  //               "mins": 0,
+  //               "strikeRate": 100,
+  //               "outDesc": "not out",
+  //               "bowlerId": 0,
+  //               "fielderId1": 0,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 0,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 0,
+  //               "sixers": 0,
+  //               "wicketCode": ""
+  //             }
+  //           }
+  //         },
+  //         "bowlTeamDetails": {
+  //           "bowlTeamId": 15,
+  //           "bowlTeamName": "United States",
+  //           "bowlTeamShortName": "USA",
+  //           "bowlersData": {
+  //             "bowl_1": {
+  //               "bowlerId": 15475,
+  //               "bowlName": "Nisarg Patel",
+  //               "bowlShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "overs": 4,
+  //               "maidens": 0,
+  //               "runs": 29,
+  //               "wickets": 2,
+  //               "economy": 7.2,
+  //               "no_balls": 0,
+  //               "wides": 0,
+  //               "dots": 0,
+  //               "balls": 0,
+  //               "runsPerBall": 0
+  //             },
+  //             "bowl_4": {
+  //               "bowlerId": 22901,
+  //               "bowlName": "Yasir Mohammad",
+  //               "bowlShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "overs": 4,
+  //               "maidens": 0,
+  //               "runs": 32,
+  //               "wickets": 2,
+  //               "economy": 8,
+  //               "no_balls": 0,
+  //               "wides": 5,
+  //               "dots": 0,
+  //               "balls": 0,
+  //               "runsPerBall": 0
+  //             },
+  //             "bowl_6": {
+  //               "bowlerId": 22891,
+  //               "bowlName": "Ritwik Behera",
+  //               "bowlShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "overs": 1,
+  //               "maidens": 0,
+  //               "runs": 5,
+  //               "wickets": 0,
+  //               "economy": 5,
+  //               "no_balls": 0,
+  //               "wides": 0,
+  //               "dots": 0,
+  //               "balls": 0,
+  //               "runsPerBall": 0
+  //             },
+  //             "bowl_5": {
+  //               "bowlerId": 22531,
+  //               "bowlName": "Vatsal Vaghela",
+  //               "bowlShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "overs": 3,
+  //               "maidens": 0,
+  //               "runs": 16,
+  //               "wickets": 2,
+  //               "economy": 5.3,
+  //               "no_balls": 0,
+  //               "wides": 0,
+  //               "dots": 0,
+  //               "balls": 0,
+  //               "runsPerBall": 0
+  //             },
+  //             "bowl_3": {
+  //               "bowlerId": 11450,
+  //               "bowlName": "Ali Khan",
+  //               "bowlShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "overs": 3,
+  //               "maidens": 0,
+  //               "runs": 34,
+  //               "wickets": 0,
+  //               "economy": 11.3,
+  //               "no_balls": 0,
+  //               "wides": 0,
+  //               "dots": 0,
+  //               "balls": 0,
+  //               "runsPerBall": 0
+  //             },
+  //             "bowl_2": {
+  //               "bowlerId": 9748,
+  //               "bowlName": "Netravalkar",
+  //               "bowlShortName": "",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "overs": 3.5,
+  //               "maidens": 0,
+  //               "runs": 33,
+  //               "wickets": 3,
+  //               "economy": 8.6,
+  //               "no_balls": 0,
+  //               "wides": 0,
+  //               "dots": 0,
+  //               "balls": 0,
+  //               "runsPerBall": 0
+  //             }
+  //           }
+  //         },
+  //         "scoreDetails": {
+  //           "ballNbr": 113,
+  //           "isDeclared": false,
+  //           "isFollowOn": false,
+  //           "overs": 18.5,
+  //           "revisedOvers": 0,
+  //           "runRate": 7.96,
+  //           "runs": 150,
+  //           "wickets": 10,
+  //           "runsPerBall": 0.81
+  //         },
+  //         "extras": {
+  //           "noBalls": 0,
+  //           "total": 6,
+  //           "byes": 0,
+  //           "penalty": 0,
+  //           "wides": 5,
+  //           "legByes": 1
+  //         },
+  //         "ppData": {
+  //           "pp_1": {
+  //             "ppId": 27,
+  //             "ppOversFrom": 0.1,
+  //             "ppOversTo": 6,
+  //             "ppType": "mandatory",
+  //             "runsScored": 59
+  //           }
+  //         },
+  //         "wicketsData": {
+  //           "wkt_8": {
+  //             "batId": 12769,
+  //             "batName": "Simi Singh",
+  //             "wktNbr": 8,
+  //             "wktOver": 16.5,
+  //             "wktRuns": 128,
+  //             "ballNbr": 165
+  //           },
+  //           "wkt_2": {
+  //             "batId": 6710,
+  //             "batName": "Balbirnie",
+  //             "wktNbr": 2,
+  //             "wktOver": 1.6,
+  //             "wktRuns": 20,
+  //             "ballNbr": 16
+  //           },
+  //           "wkt_9": {
+  //             "batId": 10451,
+  //             "batName": "Barry McCarthy",
+  //             "wktNbr": 9,
+  //             "wktOver": 17.3,
+  //             "wktRuns": 134,
+  //             "ballNbr": 173
+  //           },
+  //           "wkt_1": {
+  //             "batId": 1114,
+  //             "batName": "Stirling",
+  //             "wktNbr": 1,
+  //             "wktOver": 0.6,
+  //             "wktRuns": 6,
+  //             "ballNbr": 6
+  //           },
+  //           "wkt_6": {
+  //             "batId": 11129,
+  //             "batName": "William McClintock",
+  //             "wktNbr": 6,
+  //             "wktOver": 12.4,
+  //             "wktRuns": 96,
+  //             "ballNbr": 124
+  //           },
+  //           "wkt_10": {
+  //             "batId": 11131,
+  //             "batName": "Lorcan Tucker",
+  //             "wktNbr": 10,
+  //             "wktOver": 18.5,
+  //             "wktRuns": 150,
+  //             "ballNbr": 185
+  //           },
+  //           "wkt_4": {
+  //             "batId": 6471,
+  //             "batName": "Getkate",
+  //             "wktNbr": 4,
+  //             "wktOver": 9.5,
+  //             "wktRuns": 83,
+  //             "ballNbr": 95
+  //           },
+  //           "wkt_5": {
+  //             "batId": 13309,
+  //             "batName": "Neil Rock",
+  //             "wktNbr": 5,
+  //             "wktOver": 11.4,
+  //             "wktRuns": 92,
+  //             "ballNbr": 114
+  //           },
+  //           "wkt_7": {
+  //             "batId": 10449,
+  //             "batName": "Mark Adair",
+  //             "wktNbr": 7,
+  //             "wktOver": 13.5,
+  //             "wktRuns": 102,
+  //             "ballNbr": 135
+  //           },
+  //           "wkt_3": {
+  //             "batId": 18143,
+  //             "batName": "Curtis Campher",
+  //             "wktNbr": 3,
+  //             "wktOver": 6.1,
+  //             "wktRuns": 59,
+  //             "ballNbr": 61
+  //           }
+  //         },
+  //         "partnershipsData": {
+  //           "pat_10": {
+  //             "bat1Id": 11131,
+  //             "bat1Name": "Lorcan Tucker",
+  //             "bat1Runs": 14,
+  //             "bat1fours": 2,
+  //             "bat1sixes": 1,
+  //             "bat2Id": 11124,
+  //             "bat2Name": "Benjamin White",
+  //             "bat2Runs": 2,
+  //             "bat2fours": 0,
+  //             "bat2sixes": 0,
+  //             "totalRuns": 16,
+  //             "totalBalls": 8,
+  //             "bat1balls": 0,
+  //             "bat2balls": 0,
+  //             "bat1Ones": 0,
+  //             "bat1Twos": 0,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 0,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 0,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 0,
+  //             "bat2Sixers": 0
+  //           },
+  //           "pat_1": {
+  //             "bat1Id": 1114,
+  //             "bat1Name": "Stirling",
+  //             "bat1Runs": 5,
+  //             "bat1fours": 1,
+  //             "bat1sixes": 0,
+  //             "bat2Id": 6710,
+  //             "bat2Name": "Balbirnie",
+  //             "bat2Runs": 1,
+  //             "bat2fours": 0,
+  //             "bat2sixes": 0,
+  //             "totalRuns": 6,
+  //             "totalBalls": 6,
+  //             "bat1balls": 0,
+  //             "bat2balls": 0,
+  //             "bat1Ones": 0,
+  //             "bat1Twos": 0,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 0,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 0,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 0,
+  //             "bat2Sixers": 0
+  //           },
+  //           "pat_6": {
+  //             "bat1Id": 11131,
+  //             "bat1Name": "Lorcan Tucker",
+  //             "bat1Runs": 3,
+  //             "bat1fours": 0,
+  //             "bat1sixes": 0,
+  //             "bat2Id": 11129,
+  //             "bat2Name": "William McClintock",
+  //             "bat2Runs": 1,
+  //             "bat2fours": 0,
+  //             "bat2sixes": 0,
+  //             "totalRuns": 4,
+  //             "totalBalls": 6,
+  //             "bat1balls": 0,
+  //             "bat2balls": 0,
+  //             "bat1Ones": 0,
+  //             "bat1Twos": 0,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 0,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 0,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 0,
+  //             "bat2Sixers": 0
+  //           },
+  //           "pat_9": {
+  //             "bat1Id": 11131,
+  //             "bat1Name": "Lorcan Tucker",
+  //             "bat1Runs": 6,
+  //             "bat1fours": 0,
+  //             "bat1sixes": 1,
+  //             "bat2Id": 10451,
+  //             "bat2Name": "McCarthy",
+  //             "bat2Runs": 0,
+  //             "bat2fours": 0,
+  //             "bat2sixes": 0,
+  //             "totalRuns": 6,
+  //             "totalBalls": 4,
+  //             "bat1balls": 0,
+  //             "bat2balls": 0,
+  //             "bat1Ones": 0,
+  //             "bat1Twos": 0,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 0,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 0,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 0,
+  //             "bat2Sixers": 0
+  //           },
+  //           "pat_2": {
+  //             "bat1Id": 11131,
+  //             "bat1Name": "Lorcan Tucker",
+  //             "bat1Runs": 5,
+  //             "bat1fours": 1,
+  //             "bat1sixes": 0,
+  //             "bat2Id": 6710,
+  //             "bat2Name": "Balbirnie",
+  //             "bat2Runs": 9,
+  //             "bat2fours": 2,
+  //             "bat2sixes": 0,
+  //             "totalRuns": 14,
+  //             "totalBalls": 6,
+  //             "bat1balls": 0,
+  //             "bat2balls": 0,
+  //             "bat1Ones": 0,
+  //             "bat1Twos": 0,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 0,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 0,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 0,
+  //             "bat2Sixers": 0
+  //           },
+  //           "pat_5": {
+  //             "bat1Id": 11131,
+  //             "bat1Name": "Lorcan Tucker",
+  //             "bat1Runs": 5,
+  //             "bat1fours": 0,
+  //             "bat1sixes": 0,
+  //             "bat2Id": 13309,
+  //             "bat2Name": "Neil Rock",
+  //             "bat2Runs": 4,
+  //             "bat2fours": 0,
+  //             "bat2sixes": 0,
+  //             "totalRuns": 9,
+  //             "totalBalls": 11,
+  //             "bat1balls": 0,
+  //             "bat2balls": 0,
+  //             "bat1Ones": 0,
+  //             "bat1Twos": 0,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 0,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 0,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 0,
+  //             "bat2Sixers": 0
+  //           },
+  //           "pat_3": {
+  //             "bat1Id": 11131,
+  //             "bat1Name": "Lorcan Tucker",
+  //             "bat1Runs": 22,
+  //             "bat1fours": 3,
+  //             "bat1sixes": 1,
+  //             "bat2Id": 18143,
+  //             "bat2Name": "Curtis Campher",
+  //             "bat2Runs": 17,
+  //             "bat2fours": 2,
+  //             "bat2sixes": 1,
+  //             "totalRuns": 39,
+  //             "totalBalls": 25,
+  //             "bat1balls": 0,
+  //             "bat2balls": 0,
+  //             "bat1Ones": 0,
+  //             "bat1Twos": 0,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 0,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 0,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 0,
+  //             "bat2Sixers": 0
+  //           },
+  //           "pat_8": {
+  //             "bat1Id": 11131,
+  //             "bat1Name": "Lorcan Tucker",
+  //             "bat1Runs": 7,
+  //             "bat1fours": 0,
+  //             "bat1sixes": 0,
+  //             "bat2Id": 12769,
+  //             "bat2Name": "Simi Singh",
+  //             "bat2Runs": 13,
+  //             "bat2fours": 1,
+  //             "bat2sixes": 0,
+  //             "totalRuns": 26,
+  //             "totalBalls": 18,
+  //             "bat1balls": 0,
+  //             "bat2balls": 0,
+  //             "bat1Ones": 0,
+  //             "bat1Twos": 0,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 0,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 0,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 0,
+  //             "bat2Sixers": 0
+  //           },
+  //           "pat_4": {
+  //             "bat1Id": 11131,
+  //             "bat1Name": "Lorcan Tucker",
+  //             "bat1Runs": 19,
+  //             "bat1fours": 3,
+  //             "bat1sixes": 0,
+  //             "bat2Id": 6471,
+  //             "bat2Name": "Getkate",
+  //             "bat2Runs": 5,
+  //             "bat2fours": 0,
+  //             "bat2sixes": 0,
+  //             "totalRuns": 24,
+  //             "totalBalls": 22,
+  //             "bat1balls": 0,
+  //             "bat2balls": 0,
+  //             "bat1Ones": 0,
+  //             "bat1Twos": 0,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 0,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 0,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 0,
+  //             "bat2Sixers": 0
+  //           },
+  //           "pat_7": {
+  //             "bat1Id": 11131,
+  //             "bat1Name": "Lorcan Tucker",
+  //             "bat1Runs": 3,
+  //             "bat1fours": 0,
+  //             "bat1sixes": 0,
+  //             "bat2Id": 10449,
+  //             "bat2Name": "Mark Adair",
+  //             "bat2Runs": 3,
+  //             "bat2fours": 0,
+  //             "bat2sixes": 0,
+  //             "totalRuns": 6,
+  //             "totalBalls": 7,
+  //             "bat1balls": 0,
+  //             "bat2balls": 0,
+  //             "bat1Ones": 0,
+  //             "bat1Twos": 0,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 0,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 0,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 0,
+  //             "bat2Sixers": 0
+  //           }
+  //         }
+  //       },
+  //       {
+  //         "matchId": 40381,
+  //         "inningsId": 2,
+  //         "timeScore": 1640316185000,
+  //         "batTeamDetails": {
+  //           "batTeamId": 15,
+  //           "batTeamName": "United States",
+  //           "batTeamShortName": "USA",
+  //           "batsmenData": {
+  //             "bat_5": {
+  //               "batId": 20217,
+  //               "batName": "Sushant Modani",
+  //               "batShortName": "Sushant Modani",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 27,
+  //               "balls": 16,
+  //               "dots": 3,
+  //               "fours": 1,
+  //               "sixes": 2,
+  //               "mins": 22,
+  //               "strikeRate": 168.75,
+  //               "outDesc": "c Lorcan Tucker       b Curtis Campher",
+  //               "bowlerId": 18143,
+  //               "fielderId1": 11131,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 9,
+  //               "twos": 1,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 1,
+  //               "sixers": 2,
+  //               "wicketCode": "CAUGHT"
+  //             },
+  //             "bat_2": {
+  //               "batId": 22896,
+  //               "batName": "Ryan Scott",
+  //               "batShortName": "Ryan Scott",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 11,
+  //               "balls": 11,
+  //               "dots": 7,
+  //               "fours": 2,
+  //               "sixes": 0,
+  //               "mins": 11,
+  //               "strikeRate": 100,
+  //               "outDesc": "run out (Curtis Campher) ",
+  //               "bowlerId": 0,
+  //               "fielderId1": 18143,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 1,
+  //               "twos": 1,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 2,
+  //               "sixers": 0,
+  //               "wicketCode": "RUNOUT"
+  //             },
+  //             "bat_10": {
+  //               "batId": 22531,
+  //               "batName": "Vatsal Vaghela",
+  //               "batShortName": "Vatsal Vaghela",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 0,
+  //               "balls": 0,
+  //               "dots": 0,
+  //               "fours": 0,
+  //               "sixes": 0,
+  //               "mins": 0,
+  //               "strikeRate": 0,
+  //               "outDesc": "",
+  //               "bowlerId": 0,
+  //               "fielderId1": 0,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 0,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 0,
+  //               "sixers": 0,
+  //               "wicketCode": ""
+  //             },
+  //             "bat_7": {
+  //               "batId": 15475,
+  //               "batName": "Nisarg Patel",
+  //               "batShortName": "Nisarg Patel",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 10,
+  //               "balls": 6,
+  //               "dots": 2,
+  //               "fours": 2,
+  //               "sixes": 0,
+  //               "mins": 14,
+  //               "strikeRate": 166.67,
+  //               "outDesc": "not out",
+  //               "bowlerId": 0,
+  //               "fielderId1": 0,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 2,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 2,
+  //               "sixers": 0,
+  //               "wicketCode": ""
+  //             },
+  //             "bat_1": {
+  //               "batId": 22891,
+  //               "batName": "Ritwik Behera",
+  //               "batShortName": "Ritwik Behera",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 16,
+  //               "balls": 23,
+  //               "dots": 13,
+  //               "fours": 1,
+  //               "sixes": 0,
+  //               "mins": 31,
+  //               "strikeRate": 69.57,
+  //               "outDesc": "c Getkate       b Mark Adair",
+  //               "bowlerId": 10449,
+  //               "fielderId1": 6471,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 6,
+  //               "twos": 3,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 1,
+  //               "sixers": 0,
+  //               "wicketCode": "CAUGHT"
+  //             },
+  //             "bat_8": {
+  //               "batId": 22901,
+  //               "batName": "Yasir Mohammad",
+  //               "batShortName": "Yasir Mohammad",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 0,
+  //               "balls": 2,
+  //               "dots": 2,
+  //               "fours": 0,
+  //               "sixes": 0,
+  //               "mins": 1,
+  //               "strikeRate": 0,
+  //               "outDesc": "   c and b Curtis Campher",
+  //               "bowlerId": 18143,
+  //               "fielderId1": 0,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 0,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 0,
+  //               "sixers": 0,
+  //               "wicketCode": "CAUGHTBOWLED"
+  //             },
+  //             "bat_3": {
+  //               "batId": 14732,
+  //               "batName": "Monank Patel",
+  //               "batShortName": "Monank Patel",
+  //               "isCaptain": true,
+  //               "isKeeper": true,
+  //               "runs": 26,
+  //               "balls": 27,
+  //               "dots": 12,
+  //               "fours": 2,
+  //               "sixes": 1,
+  //               "mins": 35,
+  //               "strikeRate": 96.3,
+  //               "outDesc": "c Mark Adair       b Benjamin White",
+  //               "bowlerId": 11124,
+  //               "fielderId1": 10449,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 12,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 2,
+  //               "sixers": 1,
+  //               "wicketCode": "CAUGHT"
+  //             },
+  //             "bat_9": {
+  //               "batId": 9748,
+  //               "batName": "Saurabh Netravalkar",
+  //               "batShortName": "Netravalkar",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 5,
+  //               "balls": 6,
+  //               "dots": 3,
+  //               "fours": 0,
+  //               "sixes": 0,
+  //               "mins": 11,
+  //               "strikeRate": 83.33,
+  //               "outDesc": "not out",
+  //               "bowlerId": 0,
+  //               "fielderId1": 0,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 1,
+  //               "twos": 2,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 0,
+  //               "sixers": 0,
+  //               "wicketCode": ""
+  //             },
+  //             "bat_6": {
+  //               "batId": 10699,
+  //               "batName": "Marty Kain",
+  //               "batShortName": "Marty Kain",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 11,
+  //               "balls": 11,
+  //               "dots": 5,
+  //               "fours": 1,
+  //               "sixes": 0,
+  //               "mins": 18,
+  //               "strikeRate": 100,
+  //               "outDesc": "       b Curtis Campher",
+  //               "bowlerId": 18143,
+  //               "fielderId1": 0,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 3,
+  //               "twos": 2,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 1,
+  //               "sixers": 0,
+  //               "wicketCode": "BOWLED"
+  //             },
+  //             "bat_4": {
+  //               "batId": 12788,
+  //               "batName": "Gajanand Singh",
+  //               "batShortName": "Gajanand Singh",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 22,
+  //               "balls": 20,
+  //               "dots": 6,
+  //               "fours": 1,
+  //               "sixes": 1,
+  //               "mins": 28,
+  //               "strikeRate": 110,
+  //               "outDesc": "lbw       b Curtis Campher",
+  //               "bowlerId": 18143,
+  //               "fielderId1": 0,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 12,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 1,
+  //               "sixers": 1,
+  //               "wicketCode": "LBW"
+  //             },
+  //             "bat_11": {
+  //               "batId": 11450,
+  //               "batName": "Ali Khan",
+  //               "batShortName": "Ali Khan",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "runs": 0,
+  //               "balls": 0,
+  //               "dots": 0,
+  //               "fours": 0,
+  //               "sixes": 0,
+  //               "mins": 0,
+  //               "strikeRate": 0,
+  //               "outDesc": "",
+  //               "bowlerId": 0,
+  //               "fielderId1": 0,
+  //               "fielderId2": 0,
+  //               "fielderId3": 0,
+  //               "ones": 0,
+  //               "twos": 0,
+  //               "threes": 0,
+  //               "fives": 0,
+  //               "boundaries": 0,
+  //               "sixers": 0,
+  //               "wicketCode": ""
+  //             }
+  //           }
+  //         },
+  //         "bowlTeamDetails": {
+  //           "bowlTeamId": 27,
+  //           "bowlTeamName": "Ireland",
+  //           "bowlTeamShortName": "IRE",
+  //           "bowlersData": {
+  //             "bowl_1": {
+  //               "bowlerId": 10449,
+  //               "bowlName": "Mark Adair",
+  //               "bowlShortName": "Mark Adair",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "overs": 4,
+  //               "maidens": 0,
+  //               "runs": 25,
+  //               "wickets": 1,
+  //               "economy": 6.2,
+  //               "no_balls": 0,
+  //               "wides": 2,
+  //               "dots": 0,
+  //               "balls": 0,
+  //               "runsPerBall": 0
+  //             },
+  //             "bowl_4": {
+  //               "bowlerId": 12769,
+  //               "bowlName": "Simi Singh",
+  //               "bowlShortName": "Simi Singh",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "overs": 4,
+  //               "maidens": 0,
+  //               "runs": 31,
+  //               "wickets": 0,
+  //               "economy": 7.8,
+  //               "no_balls": 0,
+  //               "wides": 0,
+  //               "dots": 0,
+  //               "balls": 0,
+  //               "runsPerBall": 0
+  //             },
+  //             "bowl_6": {
+  //               "bowlerId": 1114,
+  //               "bowlName": "Paul Stirling",
+  //               "bowlShortName": "Stirling",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "overs": 1,
+  //               "maidens": 0,
+  //               "runs": 4,
+  //               "wickets": 0,
+  //               "economy": 4,
+  //               "no_balls": 0,
+  //               "wides": 0,
+  //               "dots": 0,
+  //               "balls": 0,
+  //               "runsPerBall": 0
+  //             },
+  //             "bowl_5": {
+  //               "bowlerId": 11124,
+  //               "bowlName": "Benjamin White",
+  //               "bowlShortName": "Benjamin White",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "overs": 3,
+  //               "maidens": 0,
+  //               "runs": 27,
+  //               "wickets": 1,
+  //               "economy": 9,
+  //               "no_balls": 1,
+  //               "wides": 2,
+  //               "dots": 0,
+  //               "balls": 0,
+  //               "runsPerBall": 0
+  //             },
+  //             "bowl_3": {
+  //               "bowlerId": 18143,
+  //               "bowlName": "Curtis Campher",
+  //               "bowlShortName": "Curtis Campher",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "overs": 4,
+  //               "maidens": 1,
+  //               "runs": 25,
+  //               "wickets": 4,
+  //               "economy": 6.2,
+  //               "no_balls": 1,
+  //               "wides": 1,
+  //               "dots": 0,
+  //               "balls": 0,
+  //               "runsPerBall": 0
+  //             },
+  //             "bowl_2": {
+  //               "bowlerId": 10451,
+  //               "bowlName": "Barry McCarthy",
+  //               "bowlShortName": "Barry McCarthy",
+  //               "isCaptain": false,
+  //               "isKeeper": false,
+  //               "overs": 4,
+  //               "maidens": 0,
+  //               "runs": 24,
+  //               "wickets": 0,
+  //               "economy": 6,
+  //               "no_balls": 0,
+  //               "wides": 1,
+  //               "dots": 0,
+  //               "balls": 0,
+  //               "runsPerBall": 0
+  //             }
+  //           }
+  //         },
+  //         "scoreDetails": {
+  //           "ballNbr": 120,
+  //           "isDeclared": false,
+  //           "isFollowOn": false,
+  //           "overs": 20,
+  //           "revisedOvers": 0,
+  //           "runRate": 7.05,
+  //           "runs": 141,
+  //           "wickets": 7,
+  //           "runsPerBall": 0.71
+  //         },
+  //         "extras": {
+  //           "noBalls": 2,
+  //           "total": 13,
+  //           "byes": 1,
+  //           "penalty": 0,
+  //           "wides": 6,
+  //           "legByes": 4
+  //         },
+  //         "ppData": {
+  //           "pp_1": {
+  //             "ppId": 28,
+  //             "ppOversFrom": 0.1,
+  //             "ppOversTo": 6,
+  //             "ppType": "mandatory",
+  //             "runsScored": 34
+  //           }
+  //         },
+  //         "wicketsData": {
+  //           "wkt_2": {
+  //             "batId": 22891,
+  //             "batName": "Ritwik Behera",
+  //             "wktNbr": 2,
+  //             "wktOver": 7.2,
+  //             "wktRuns": 40,
+  //             "ballNbr": 72
+  //           },
+  //           "wkt_1": {
+  //             "batId": 22896,
+  //             "batName": "Ryan Scott",
+  //             "wktNbr": 1,
+  //             "wktOver": 3,
+  //             "wktRuns": 20,
+  //             "ballNbr": 30
+  //           },
+  //           "wkt_6": {
+  //             "batId": 10699,
+  //             "batName": "Marty Kain",
+  //             "wktNbr": 6,
+  //             "wktOver": 17.4,
+  //             "wktRuns": 122,
+  //             "ballNbr": 174
+  //           },
+  //           "wkt_4": {
+  //             "batId": 12788,
+  //             "batName": "Gajanand Singh",
+  //             "wktNbr": 4,
+  //             "wktOver": 14.3,
+  //             "wktRuns": 89,
+  //             "ballNbr": 143
+  //           },
+  //           "wkt_5": {
+  //             "batId": 20217,
+  //             "batName": "Sushant Modani",
+  //             "wktNbr": 5,
+  //             "wktOver": 17.3,
+  //             "wktRuns": 122,
+  //             "ballNbr": 173
+  //           },
+  //           "wkt_7": {
+  //             "batId": 22901,
+  //             "batName": "Yasir Mohammad",
+  //             "wktNbr": 7,
+  //             "wktOver": 17.6,
+  //             "wktRuns": 123,
+  //             "ballNbr": 176
+  //           },
+  //           "wkt_3": {
+  //             "batId": 14732,
+  //             "batName": "Monank Patel",
+  //             "wktNbr": 3,
+  //             "wktOver": 11.4,
+  //             "wktRuns": 68,
+  //             "ballNbr": 114
+  //           }
+  //         },
+  //         "partnershipsData": {
+  //           "pat_1": {
+  //             "bat1Id": 22891,
+  //             "bat1Name": "Ritwik Behera",
+  //             "bat1Runs": 6,
+  //             "bat1fours": 0,
+  //             "bat1sixes": 0,
+  //             "bat2Id": 22896,
+  //             "bat2Name": "Ryan Scott",
+  //             "bat2Runs": 11,
+  //             "bat2fours": 2,
+  //             "bat2sixes": 0,
+  //             "totalRuns": 20,
+  //             "totalBalls": 18,
+  //             "bat1balls": 7,
+  //             "bat2balls": 11,
+  //             "bat1Ones": 2,
+  //             "bat1Twos": 2,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 0,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 1,
+  //             "bat2Twos": 1,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 2,
+  //             "bat2Sixers": 0
+  //           },
+  //           "pat_6": {
+  //             "bat1Id": 10699,
+  //             "bat1Name": "Marty Kain",
+  //             "bat1Runs": 0,
+  //             "bat1fours": 0,
+  //             "bat1sixes": 0,
+  //             "bat2Id": 15475,
+  //             "bat2Name": "Nisarg Patel",
+  //             "bat2Runs": 0,
+  //             "bat2fours": 0,
+  //             "bat2sixes": 0,
+  //             "totalRuns": 0,
+  //             "totalBalls": 1,
+  //             "bat1balls": 1,
+  //             "bat2balls": 0,
+  //             "bat1Ones": 0,
+  //             "bat1Twos": 0,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 0,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 0,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 0,
+  //             "bat2Sixers": 0
+  //           },
+  //           "pat_2": {
+  //             "bat1Id": 22891,
+  //             "bat1Name": "Ritwik Behera",
+  //             "bat1Runs": 10,
+  //             "bat1fours": 1,
+  //             "bat1sixes": 0,
+  //             "bat2Id": 14732,
+  //             "bat2Name": "Monank Patel",
+  //             "bat2Runs": 10,
+  //             "bat2fours": 1,
+  //             "bat2sixes": 0,
+  //             "totalRuns": 20,
+  //             "totalBalls": 26,
+  //             "bat1balls": 16,
+  //             "bat2balls": 10,
+  //             "bat1Ones": 4,
+  //             "bat1Twos": 1,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 1,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 6,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 1,
+  //             "bat2Sixers": 0
+  //           },
+  //           "pat_5": {
+  //             "bat1Id": 10699,
+  //             "bat1Name": "Marty Kain",
+  //             "bat1Runs": 11,
+  //             "bat1fours": 1,
+  //             "bat1sixes": 0,
+  //             "bat2Id": 20217,
+  //             "bat2Name": "Sushant Modani",
+  //             "bat2Runs": 20,
+  //             "bat2fours": 1,
+  //             "bat2sixes": 2,
+  //             "totalRuns": 33,
+  //             "totalBalls": 19,
+  //             "bat1balls": 10,
+  //             "bat2balls": 9,
+  //             "bat1Ones": 3,
+  //             "bat1Twos": 2,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 1,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 4,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 1,
+  //             "bat2Sixers": 2
+  //           },
+  //           "pat_3": {
+  //             "bat1Id": 12788,
+  //             "bat1Name": "Gajanand",
+  //             "bat1Runs": 8,
+  //             "bat1fours": 0,
+  //             "bat1sixes": 0,
+  //             "bat2Id": 14732,
+  //             "bat2Name": "Monank Patel",
+  //             "bat2Runs": 16,
+  //             "bat2fours": 1,
+  //             "bat2sixes": 1,
+  //             "totalRuns": 28,
+  //             "totalBalls": 27,
+  //             "bat1balls": 10,
+  //             "bat2balls": 17,
+  //             "bat1Ones": 8,
+  //             "bat1Twos": 0,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 0,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 6,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 1,
+  //             "bat2Sixers": 1
+  //           },
+  //           "pat_8": {
+  //             "bat1Id": 9748,
+  //             "bat1Name": "Netravalkar",
+  //             "bat1Runs": 5,
+  //             "bat1fours": 0,
+  //             "bat1sixes": 0,
+  //             "bat2Id": 15475,
+  //             "bat2Name": "Nisarg Patel",
+  //             "bat2Runs": 10,
+  //             "bat2fours": 2,
+  //             "bat2sixes": 0,
+  //             "totalRuns": 18,
+  //             "totalBalls": 12,
+  //             "bat1balls": 6,
+  //             "bat2balls": 6,
+  //             "bat1Ones": 1,
+  //             "bat1Twos": 2,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 0,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 2,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 2,
+  //             "bat2Sixers": 0
+  //           },
+  //           "pat_4": {
+  //             "bat1Id": 12788,
+  //             "bat1Name": "Gajanand",
+  //             "bat1Runs": 14,
+  //             "bat1fours": 1,
+  //             "bat1sixes": 1,
+  //             "bat2Id": 20217,
+  //             "bat2Name": "Sushant Modani",
+  //             "bat2Runs": 7,
+  //             "bat2fours": 0,
+  //             "bat2sixes": 0,
+  //             "totalRuns": 21,
+  //             "totalBalls": 17,
+  //             "bat1balls": 10,
+  //             "bat2balls": 7,
+  //             "bat1Ones": 4,
+  //             "bat1Twos": 0,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 1,
+  //             "bat1Sixers": 1,
+  //             "bat2Ones": 5,
+  //             "bat2Twos": 1,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 0,
+  //             "bat2Sixers": 0
+  //           },
+  //           "pat_7": {
+  //             "bat1Id": 22901,
+  //             "bat1Name": "Yasir Mohammad",
+  //             "bat1Runs": 0,
+  //             "bat1fours": 0,
+  //             "bat1sixes": 0,
+  //             "bat2Id": 15475,
+  //             "bat2Name": "Nisarg Patel",
+  //             "bat2Runs": 0,
+  //             "bat2fours": 0,
+  //             "bat2sixes": 0,
+  //             "totalRuns": 1,
+  //             "totalBalls": 2,
+  //             "bat1balls": 2,
+  //             "bat2balls": 0,
+  //             "bat1Ones": 0,
+  //             "bat1Twos": 0,
+  //             "bat1Threes": 0,
+  //             "bat1Fives": 0,
+  //             "bat1Boundaries": 0,
+  //             "bat1Sixers": 0,
+  //             "bat2Ones": 0,
+  //             "bat2Twos": 0,
+  //             "bat2Threes": 0,
+  //             "bat2Fives": 0,
+  //             "bat2Boundaries": 0,
+  //             "bat2Sixers": 0
+  //           }
+  //         }
+  //       }
+  //     ],
+  //     "matchHeader": {
+  //       "matchId": 40381,
+  //       "matchDescription": "2nd T20I",
+  //       "matchFormat": "T20",
+  //       "matchType": "International",
+  //       "complete": true,
+  //       "domestic": false,
+  //       "matchStartTimestamp": 1640304000000,
+  //       "matchCompleteTimestamp": 1640316253487,
+  //       "dayNight": true,
+  //       "year": 2021,
+  //       "state": "Complete",
+  //       "status": "United States opt to bowl",
+  //       "tossResults": {
+  //         "tossWinnerId": 15,
+  //         "tossWinnerName": "United States",
+  //         "decision": "Bowling"
+  //       },
+  //       "result": {
+  //         "resultType": "win",
+  //         "winningTeam": "Ireland",
+  //         "winningteamId": 27,
+  //         "winningMargin": 9,
+  //         "winByRuns": true,
+  //         "winByInnings": false
+  //       },
+  //       "revisedTarget": {
+  //         "reason": ""
+  //       },
+  //       "playersOfTheMatch": [
+  //         {
+  //           "id": 11131,
+  //           "name": "Lorcan Tucker",
+  //           "fullName": "Lorcan Tucker",
+  //           "nickName": "Lorcan Tucker",
+  //           "captain": false,
+  //           "keeper": false,
+  //           "substitute": false,
+  //           "teamName": "Ireland U19",
+  //           "faceImageId": 191070
+  //         }
+  //       ],
+  //       "playersOfTheSeries": [
+  //         {
+  //           "id": 11131,
+  //           "name": "Lorcan Tucker",
+  //           "fullName": "Lorcan Tucker",
+  //           "nickName": "Lorcan Tucker",
+  //           "captain": false,
+  //           "keeper": false,
+  //           "substitute": false,
+  //           "bowlingStyle": "Ireland U19",
+  //           "faceImageId": 191070
+  //         }
+  //       ],
+  //       "matchTeamInfo": [
+  //         {
+  //           "battingTeamId": 27,
+  //           "battingTeamShortName": "IRE",
+  //           "bowlingTeamId": 15,
+  //           "bowlingTeamShortName": "USA"
+  //         },
+  //         {
+  //           "battingTeamId": 15,
+  //           "battingTeamShortName": "USA",
+  //           "bowlingTeamId": 27,
+  //           "bowlingTeamShortName": "IRE"
+  //         }
+  //       ],
+  //       "isMatchNotCovered": false,
+  //       "team1": {
+  //         "id": 15,
+  //         "name": "United States",
+  //         "playerDetails": [],
+  //         "shortName": "USA"
+  //       },
+  //       "team2": {
+  //         "id": 27,
+  //         "name": "Ireland",
+  //         "playerDetails": [],
+  //         "shortName": "IRE"
+  //       },
+  //       "seriesDesc": "Ireland tour of USA, 2021",
+  //       "seriesId": 3866,
+  //       "seriesName": "Ireland tour of USA, 2021"
+  //     },
+  //     "isMatchComplete": true,
+  //     "status": "Ireland won by 9 runs",
+  //     "videos": [],
+  //     "responseLastUpdated": 1650587016
+  //   }
+  // ]
+   const [articles, setArticles] = useState([])
    const [loading, setloading] = useState(false)
-   const [matchId, setmatchid] = useState(useParams())
+   const {id} = useParams()
+   const apikey=process.env.REACT_APP_LIVESCORE_API2
 
-   console.log(matchId)
+  // console.log("Match id",id)
 
-//  useEffect(() => {
-//    fetchMatches()
-//  }, [])
+ useEffect(() => {
+   const cached=sessionStorage.getItem(`${id}`)
+  if(cached){
+    setArticles(JSON.parse(cached))
+    return
+  }
+   fetchMatches()
+ }, [id]);
  
   
   // componentDidMount() {
   //   this.fetchMatches();
   //   this.interval = setInterval(this.fetchMatches, 60000); // 1 minute
-  // }
+  // };
   
   // componentWillUnmount() {
   //   clearInterval(this.interval);
-  // }
+  // };
   
-  // const fetchMatches = async () => {
+   const fetchMatches = async () => {
    
     
-  //   try {
-  //     let url = `https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/${matchId}/hscard`;
+    try {
+      setloading(true)
+      let url = `https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/${id}/hscard`;
       
-  //     let options = {
-  //       method: "GET",
-  //       headers: {
+      let options = {
+        method: "GET",
+        headers: {
           
-  //         "X-RapidAPI-Key": "d8de258d21msh96065a13b9506c0p108b56jsnc3eecd186240",
-  //         "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
-  //       }
-  //     };
-  //     this.setState({loading: true});
-  //     let data = await fetch(url, options);
-  //     console.log(data);
-  //     let parsedData = await data.json();
-  //     setloading(true)
-  //   //  console.log(parsedData.typeMatches);
+          "X-RapidAPI-Key": apikey, 
+          "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
+        }
+      };
+     
+      let data = await fetch(url, options);
+     // console.log(data);
+      if(data.status===429){
+        alert("API Limit Exceeded")
+        setloading(false)
+        return
+      }
+      //console.log(data);
+      let parsedData = await data.json();
+     // console.log(parsedData.typeMatches);
       
-  //     setarticles(parsedData)
-  //     setloading(false)
-  //     console.log(articles);
-  //   } catch (err) {
-  //     console.error("API error:", err);
-  //   }
-  // }
+      setArticles(parsedData)
+      sessionStorage.setItem(`${id}`,JSON.stringify(parsedData))
+      setloading(false)
+     // console.log('daa',articles);
+    } catch (err) {
+      console.error("API error:", err);
+    }
+  
+   }
+  //    useEffect(() => {
+  //  // console.log("✅ Updated articles:", articles);
+  // }, [articles]);
   
     return (
       <>
-      
+       {loading && <Spinner/>}
         <div className="page-content" id="Itinerary">
 
           <div className="accordion-area accordion mb-30" id="faqAccordion">
-            <div className="accordion-card style2 active">
-              <div className="accordion-header" id="collapse-item-1">
+            {articles?.scorecard?.map((inning,index)=>(
+               <div className="accordion-card style2 " key={index}>
+              <div className="accordion-header" id={`collapse-item-${index+1}`}>
                 <button className="accordion-button d-flex justify-content-between"
-                  type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1"
-                  aria-expanded="true" aria-controls="collapse-1">
-                  <span className="accrodion-title-span">Innings - 1    {articles[0].scoreCard[0].batTeamDetails.batTeamName}</span>
-                  <span className="fw-bold ms-auto">{articles[0].scoreCard[0].scoreDetails.runs}/
-                    {articles[0].scoreCard[0].scoreDetails.wickets} (
-                    {articles[0].scoreCard[0].scoreDetails.overs})
+                  type="button" data-bs-toggle="collapse" data-bs-target={`#collapse-${index+1}`}
+                  aria-expanded={index===0 ? "true" : "false"} aria-controls={`#collapse-${index+1}`}>
+                  <span className="accrodion-title-span">Innings - {index+1}    {inning?.batteamname}</span>
+                  <span className="fw-bold ms-auto">{inning?.score}/
+                    {inning?.wickets} (
+                    {inning?.overs})
                   </span>
                 </button>
               </div>
-              <div id="collapse-1" className="accordion-collapse collapse show"
-                aria-labelledby="collapse-item-1" data-bs-parent="#faqAccordion">
+              <div id={`collapse-${index+1}`} className={`accordion-collapse collapse ${index===0 ? "show" : ""}`}
+                aria-labelledby={`collapse-${index+1}`} data-bs-parent="#faqAccordion">
                 <div className="accordion-body style2">
                   <div className="row align-items-center">
                     <div className="col-md-8">
 
-                      <table className="table table-bordered ">
+                      <table className="table table-bordered " >
                         <thead className="table-success">
                           <tr>
                             <th scope="col">Batters</th>
@@ -1701,24 +1720,24 @@ const Hscorecard = (props)=> {
                           </tr>
                         </thead>
                         <tbody>
-                          {Object.values(articles[0].scoreCard[0].batTeamDetails.batsmenData).map((b) => (
-                            <tr key={b.batId}>
-                              <th scope="row">{b.batName}
-                                <div className="text-muted">{b.outDesc}</div>
-                              </th>
+                         {Object.values(inning?.batsman || {}).map((b) => (
+                            <tr key={b.id}>
+                                <th scope="row">{b.name}
+                                    <div className="text-muted">{b.outdec}</div>
+                                </th>
 
-                              <td>{b.runs}</td>
-                              <td>{b.balls}</td>
-                              <td>{b.fours}</td>
-                              <td>{b.sixes}</td>
-                              <td>{b.strikeRate}</td>
+                                <td>{b.runs}</td>
+                                <td>{b.balls}</td>
+                                <td>{b.fours}</td>
+                                <td>{b.sixes}</td>
+                                <td>{b.strkrate}</td>
                             </tr>
-                          ))}
+                        ))}
 
 
                         </tbody>
                       </table>
-                       <div className="my-3">Extras   <span>{articles[0].scoreCard[0].extrasData.total}(b {articles[0].scoreCard[0].extrasData.byes}, lb {articles[0].scoreCard[0].extrasData.legByes}, w {articles[0].scoreCard[0].extrasData.wides}, nb {articles[0].scoreCard[0].extrasData.noBalls}, p {articles[0].scoreCard[0].extrasData.penalty})</span></div>
+                       <div className="my-3">Extras   <span>{inning?.extras?.total}(b {inning?.extras?.byes}, w {inning?.extras?.wides},legbyes {inning?.extras?.legbyes}, nb {inning?.extras?.noballs}, p {inning?.extras?.penalty})</span></div>
                       <table className="table table-bordered ">
                         <thead className="table-success">
                           <tr>
@@ -1731,9 +1750,9 @@ const Hscorecard = (props)=> {
                           </tr>
                         </thead>
                         <tbody>
-                          {Object.values(articles[0].scoreCard[0].bowlTeamDetails.bowlersData).map((b) => (
-                            <tr key={b.bowlerId}>
-                              <th scope="row">{b.bowlName}</th>
+                          {Object.values(inning?.bowler || {}).map((b) => (
+                            <tr key={b.id}>
+                              <th scope="row">{b.name}</th>
 
                               <td>{b.overs}</td>
                               <td>{b.maidens}</td>
@@ -1755,97 +1774,11 @@ const Hscorecard = (props)=> {
                 </div>
               </div>
             </div>
+            ))}
+           
           </div>
         </div>
-        <div className="page-content" id="Itinerary">
-
-          <div className="accordion-area accordion mb-30" id="faqAccordion">
-            <div className="accordion-card style2 active">
-              <div className="accordion-header" id="collapse-item-2">
-                <button className="accordion-button collapsed d-flex justify-content-between"
-                  type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2"
-                  aria-expanded="true" aria-controls="collapse-2">
-                    <span className="accrodion-title-span">Innings - 2    {articles[0].scoreCard[1].batTeamDetails.batTeamName}</span>
-                  <span className="fw-bold ms-auto">{articles[0].scoreCard[1].scoreDetails.runs}/
-                    {articles[0].scoreCard[1].scoreDetails.wickets} (
-                    {articles[0].scoreCard[1].scoreDetails.overs})
-                  </span>
-                </button>
-              </div>
-              <div id="collapse-2" className="accordion-collapse collapse"
-                aria-labelledby="collapse-item-2" data-bs-parent="#faqAccordion">
-                <div className="accordion-body style2">
-                  <div className="row align-items-center">
-                    <div className="col-md-8">
-
-                      <table className="table table-bordered ">
-                        <thead className="table-success">
-                          <tr>
-                            <th scope="col">Batters</th>
-                            <th scope="col">R</th>
-                            <th scope="col">B</th>
-                            <th scope="col">4s</th>
-                            <th scope="col">6s</th>
-                            <th scope="col">SR</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {Object.values(articles[0].scoreCard[1].batTeamDetails.batsmenData).map((b) => (
-                            <tr key={b.batId}>
-                              <th scope="row">{b.batName}
-                                <div className="text-muted">{b.outDesc}</div>
-                              </th>
-
-                              <td>{b.runs}</td>
-                              <td>{b.balls}</td>
-                              <td>{b.fours}</td>
-                              <td>{b.sixes}</td>
-                              <td>{b.strikeRate}</td>
-                            </tr>
-                          ))}
-
-
-                        </tbody>
-                      </table>
-                       <div className="my-3">Extras   <span>{articles[0].scoreCard[1].extrasData.total}(b {articles[0].scoreCard[1].extrasData.byes}, lb {articles[0].scoreCard[1].extrasData.legByes}, w {articles[0].scoreCard[1].extrasData.wides}, nb {articles[0].scoreCard[1].extrasData.noBalls}, p {articles[0].scoreCard[1].extrasData.penalty})</span></div>                   
-                      <table className="table table-bordered ">
-                        <thead className="table-success">
-                          <tr>
-                            <th scope="col">Bowlers</th>
-                            <th scope="col">O</th>
-                            <th scope="col">M</th>
-                            <th scope="col">R</th>
-                            <th scope="col">W</th>
-                            <th scope="col">Economy</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {Object.values(articles[0].scoreCard[1].bowlTeamDetails.bowlersData).map((b) => (
-                            <tr key={b.batId}>
-                              <th scope="row">{b.bowlName}</th>
-
-                              <td>{b.overs}</td>
-                              <td>{b.maidens}</td>
-                              <td>{b.runs}</td>
-
-                              <td>{b.wickets}</td>
-                              <td>{b.economy}</td>
-
-                            </tr>
-                          ))}
-
-                        </tbody>
-                      </table>
-
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+       
 
 
 

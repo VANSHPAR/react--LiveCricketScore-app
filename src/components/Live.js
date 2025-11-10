@@ -1,368 +1,174 @@
-import React, { Component , useEffect, useState
- } from 'react'
+import React, {
+    Component, useEffect, useState
+} from 'react'
 import { useParams, useNavigate } from "react-router-dom";
+import Spinner from './Spinner'
 
-const Live = (props)=> {
- console.log(useParams())
- const data=[
-   {
-  "miniscore": {
-    "inningsId": 2,
-    "batsmanStriker": {
-      "batBalls": 6,
-      "batDots": 2,
-      "batFours": 2,
-      "batId": 15475,
-      "batName": "Nisarg Patel",
-      "batMins": 14,
-      "batRuns": 10,
-      "batSixes": 0,
-      "batStrikeRate": 166.67
-    },
-    "batsmanNonStriker": {
-      "batBalls": 6,
-      "batDots": 3,
-      "batFours": 0,
-      "batId": 9748,
-      "batName": "Saurabh Netravalkar",
-      "batMins": 11,
-      "batRuns": 5,
-      "batSixes": 0,
-      "batStrikeRate": 83.33
-    },
-    "batTeam": {
-      "teamId": 15,
-      "teamScore": 141,
-      "teamWkts": 7
-    },
-    "bowlerStriker": {
-      "bowlId": 10451,
-      "bowlName": "Barry McCarthy",
-      "bowlMaidens": 0,
-      "bowlNoballs": 0,
-      "bowlOvs": 4,
-      "bowlRuns": 24,
-      "bowlWides": 1,
-      "bowlWkts": 0,
-      "bowlEcon": 6
-    },
-    "bowlerNonStriker": {
-      "bowlId": 10449,
-      "bowlName": "Mark Adair",
-      "bowlMaidens": 0,
-      "bowlNoballs": 0,
-      "bowlOvs": 4,
-      "bowlRuns": 25,
-      "bowlWides": 2,
-      "bowlWkts": 1,
-      "bowlEcon": 6.25
-    },
-    "overs": 19.6,
-    "recentOvsStats": "... 1 0 2 2 1 Wd 4  | 0 Wd B1 4 0 0 1",
-    "target": 151,
-    "partnerShip": {
-      "balls": 12,
-      "runs": 18
-    },
-    "currentRunRate": 7.05,
-    "requiredRunRate": 0,
-    "lastWicket": "Yasir Mohammad   c and b Curtis Campher 0(2)  - 123/7 in 17.6 ov.",
-    "matchScoreDetails": {
-      "matchId": 40381,
-      "inningsScoreList": [
-        {
-          "inningsId": 2,
-          "batTeamId": 15,
-          "batTeamName": "USA",
-          "score": 141,
-          "wickets": 7,
-          "overs": 19.6,
-          "isDeclared": false,
-          "isFollowOn": false,
-          "ballNbr": 120
-        },
-        {
-          "inningsId": 1,
-          "batTeamId": 27,
-          "batTeamName": "IRE",
-          "score": 150,
-          "wickets": 10,
-          "overs": 18.5,
-          "isDeclared": false,
-          "isFollowOn": false,
-          "ballNbr": 113
+const Live = (props) => {
+      const [articles, setArticles] = useState([])
+       const [loading, setloading] = useState(false)
+       const {id} = useParams()
+       const lastInning = articles?.scorecard?.[articles?.scorecard?.length - 1];
+      const apikey=process.env.REACT_APP_LIVESCORE_API2
+      // console.log("Match id",id)
+    
+     useEffect(() => {
+       const cached=sessionStorage.getItem(`${id}`)
+      if(cached){
+        setArticles(JSON.parse(cached))
+        return
+      }
+       fetchMatches()
+     }, [id]);
+
+    //        componentDidMount() {
+    //    this.
+    //    this.interval = setInterval(this.fetchMatches, 60000);  1 minute
+    //  }
+
+    //  componentWillUnmount() {
+    //    clearInterval(this.interval);
+    //  }
+
+     const fetchMatches = async () => {
+   
+    
+    try {
+      setloading(true)
+      let url = `https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/${id}/hscard`;
+      
+      let options = {
+        method: "GET",
+        headers: {
+          
+         
+          "X-RapidAPI-Key": apikey,
+          "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
         }
-      ],
-      "tossResults": {
-        "tossWinnerId": 15,
-        "tossWinnerName": "United States",
-        "decision": "Bowling"
-      },
-      "matchTeamInfo": [
-        {
-          "battingTeamId": 27,
-          "battingTeamShortName": "IRE",
-          "bowlingTeamId": 15,
-          "bowlingTeamShortName": "USA"
-        },
-        {
-          "battingTeamId": 15,
-          "battingTeamShortName": "USA",
-          "bowlingTeamId": 27,
-          "bowlingTeamShortName": "IRE"
-        }
-      ],
-      "isMatchNotCovered": false,
-      "matchFormat": "T20",
-      "state": "Complete",
-      "customStatus": "Ireland won by 9 runs",
-      "highlightedTeamId": 27
-    },
-    "latestPerformance": [],
-    "ppData": {
-      "pp_1": {
-        "ppId": 28,
-        "ppOversFrom": 0.1,
-        "ppOversTo": 6,
-        "ppType": "mandatory",
-        "runsScored": 34
+      };
+     
+      let data = await fetch(url, options);
+     // console.log(data);
+      if(data.status===429){
+        alert("API Limit Exceeded")
+        setloading(false)
+        return
       }
-    },
-    "overSummaryList": [],
-    "lastWicketScore": 0,
-    "remRunsToWin": 0,
-    "responseLastUpdated": 1650587614
-  },
-  "matchHeader": {
-    "matchId": 40381,
-    "matchDescription": "2nd T20I",
-    "matchFormat": "T20",
-    "matchType": "International",
-    "complete": true,
-    "domestic": false,
-    "matchStartTimestamp": 1640304000000,
-    "matchCompleteTimestamp": 1640316253487,
-    "dayNight": true,
-    "year": 2021,
-    "state": "Complete",
-    "status": "United States opt to bowl",
-    "tossResults": {
-      "tossWinnerId": 15,
-      "tossWinnerName": "United States",
-      "decision": "Bowling"
-    },
-    "result": {
-      "resultType": "win",
-      "winningTeam": "Ireland",
-      "winningteamId": 27,
-      "winningMargin": 9,
-      "winByRuns": true,
-      "winByInnings": false
-    },
-    "revisedTarget": {
-      "reason": ""
-    },
-    "playersOfTheMatch": [
-      {
-        "id": 11131,
-        "name": "Lorcan Tucker",
-        "fullName": "Lorcan Tucker",
-        "nickName": "Lorcan Tucker",
-        "captain": false,
-        "keeper": false,
-        "substitute": false,
-        "teamName": "Ireland U19",
-        "faceImageId": 191070
-      }
-    ],
-    "playersOfTheSeries": [
-      {
-        "id": 11131,
-        "name": "Lorcan Tucker",
-        "fullName": "Lorcan Tucker",
-        "nickName": "Lorcan Tucker",
-        "captain": false,
-        "keeper": false,
-        "substitute": false,
-        "bowlingStyle": "Ireland U19",
-        "faceImageId": 191070
-      }
-    ],
-    "matchTeamInfo": [
-      {
-        "battingTeamId": 27,
-        "battingTeamShortName": "IRE",
-        "bowlingTeamId": 15,
-        "bowlingTeamShortName": "USA"
-      },
-      {
-        "battingTeamId": 15,
-        "battingTeamShortName": "USA",
-        "bowlingTeamId": 27,
-        "bowlingTeamShortName": "IRE"
-      }
-    ],
-    "isMatchNotCovered": false,
-    "team1": {
-      "id": 15,
-      "name": "United States",
-      "playerDetails": [],
-      "shortName": "USA"
-    },
-    "team2": {
-      "id": 27,
-      "name": "Ireland",
-      "playerDetails": [],
-      "shortName": "IRE"
-    },
-    "seriesDesc": "Ireland tour of USA, 2021",
-    "seriesId": 3866,
-    "seriesName": "Ireland tour of USA, 2021"
-  }
-}
+      //console.log(data);
+      let parsedData = await data.json();
+     // console.log(parsedData.typeMatches);
+      
+      setArticles(parsedData)
+      sessionStorage.setItem(`${id}`,JSON.stringify(parsedData))
+      setloading(false)
+     // console.log('daa',articles);
+    } catch (err) {
+      console.error("API error:", err);
+    }
   
+   }
 
-]
-
-const [articles, setArticles] = useState(data)
-const [loading, setLoading] = useState(false)
-const [matchId,sematchId]=useState(useParams())
-
-
-// useEffect(() => {
-//   fetchMatches();
-
-  
-// }, [])
-
-//       componentDidMount() {
-//   this.
-//   this.interval = setInterval(this.fetchMatches, 60000); // 1 minute
-// }
-
-// componentWillUnmount() {
-//   clearInterval(this.interval);
-// }
-
-// const fetchMatches = async () => {
- 
-  
-//   try {
-//     let url = `https://cricbuzz-cricket.p.rapidapi.com/mcenter/v1/${matchId}/leanback`;
-    
-//     let options = {
-//       method: "GET",
-//       headers: {
-        
-//         "X-RapidAPI-Key": "d8de258d21msh96065a13b9506c0p108b56jsnc3eecd186240",
-//         "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
-//       }
-//     };
-//     setLoading(true)
-//     let data = await fetch(url, options);
-//     console.log(data);
-//     let parsedData = await data.json();
-//     //console.log(parsedData.typeMatches);
-    
-//    setArticles(parsedData)
-//    setLoading(false)
-//     console.log(articles);
-//   } catch (err) {
-//     console.error("API error:", err);
-//   }
-// }
-
-  
-    
+   useEffect(() => {
+  // console.log("✅ Updated articles:", articles);
+  }, [articles]);
 
 
 
 
     return (
+        <>
+        {loading && <Spinner/>}
+            <div>
+                <div className="my-3">
+                    <div className="card border-dark mb-3" >
 
-      <div>
-         <div className="my-3">
-              <div className="card border-dark mb-3" >
-                
-                  <div className="card-body">
+                        <div className="card-body">
+                            {articles?.scorecard?.map((inning,index)=>(
+                                <div key={index}>
+                            {/* <img src={`https:cricbuzz-cricket.p.rapidapi.com/photos/v1/index?lastId=${url1}`}  className="img-fluid" />  */}
+                            <span > {inning?.batteamname}     {inning?.score}/{inning?.wickets} ({inning?.overs})</span>
+                            <br />
+                            <br />
+                            </div>
+                            ))}
+                            <div className="text-danger">{articles?.status}</div>
+                        </div>
+                    </div>
+                </div>
+                {articles?.ismatchcomplete===false && (
+                    <>
+                      <table className="table table-bordered ">
+                    <thead className="table-success">
+                        <tr>
+                            <th scope="col">Batters</th>
+                            <th scope="col">R</th>
+                            <th scope="col">B</th>
+                            <th scope="col">4s</th>
+                            <th scope="col">6s</th>
+                            <th scope="col">SR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {lastInning?.batsman?.map((b) => (b.outdec==="batting" ) ? (
+                            
+                              <tr key={b.id}>
+                              <th scope="row">{b.name}
+                                <div className="text-muted">{b.outdec}</div>
+                              </th>
+
+                              <td>{b.runs}</td>
+                              <td>{b.balls}</td>
+                              <td>{b.fours}</td>
+                              <td>{b.sixes}</td>
+                              <td>{b.strkrate}</td>
+                            </tr>
+                           
+                            
+                          )  : null )}
+
+
+                    </tbody>
+                </table>
+                <table className="table table-bordered ">
+                    <thead className="table-success">
+                        <tr>
+                            <th scope="col">Bowlers</th>
+                            <th scope="col">O</th>
+                            <th scope="col">M</th>
+                            <th scope="col">R</th>
+                            <th scope="col">W</th>
+                        </tr>
+                    </thead>
                     
-                    {/* <img src={`https://cricbuzz-cricket.p.rapidapi.com/photos/v1/index?lastId=${url1}`}  className="img-fluid" />  */}
-                    <span > {articles[0].miniscore.matchScoreDetails.inningsScoreList[0]?.batTeamName}     {articles[0].miniscore.matchScoreDetails.inningsScoreList[0]?.score}/{articles[0].miniscore.matchScoreDetails.inningsScoreList[0]?.wickets} ({articles[0].miniscore.matchScoreDetails.inningsScoreList[0]?.overs})</span>
-                    <br />
-                    <br />
-                    {/* <img src={`https://cricbuzz-cricket.p.rapidapi.com/photos/v1/index?lastId=${url2}`} className="img-fluid"/> */}
-                    <span > {articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.batTeamName}     {articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.score}/{articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.wickets} ({articles[0].miniscore.matchScoreDetails.inningsScoreList[1]?.overs})</span>
-                    <p className="text-muted">TAR ({articles[0].miniscore.target})          CRR ({articles[0].miniscore.currentRunRate})          REQ ({articles[0].miniscore.requiredRunRate})          PSHIP {articles[0].miniscore.partnerShip.runs}({articles[0].miniscore.partnerShip.balls})</p>
-                     <p className="card-text text-info-emphasis">{articles[0].miniscore.matchScoreDetails?.customStatus}</p>
-                    {/*<Link to="/detail" className="btn btn-sm btn-primary" >Read More</Link> */}
-                  </div>
-              </div>
-            </div>
-       <table className="table table-bordered ">
-  <thead className="table-success">
-    <tr>
-      <th scope="col">Batters</th>
-      <th scope="col">R</th>
-      <th scope="col">B</th>
-       <th scope="col">4s</th>
-      <th scope="col">6s</th>
-      <th scope="col">SR</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">{articles[0].miniscore.batsmanStriker.batName}</th>
-      
-      <td>{articles[0].miniscore.batsmanStriker.batRuns}</td>
-      <td>{articles[0].miniscore.batsmanStriker.batBalls}</td>
-      <td>{articles[0].miniscore.batsmanStriker.batFours}</td>
-      <td>{articles[0].miniscore.batsmanStriker.batSixes}</td>
-      <td>{articles[0].miniscore.batsmanStriker.batStrikeRate}</td>
-    </tr>
-    <tr>
-     <th scope="row">{articles[0].miniscore.batsmanNonStriker.batName}</th>
-      
-      <td>{articles[0].miniscore.batsmanNonStriker.batRuns}</td>
-      <td>{articles[0].miniscore.batsmanNonStriker.batBalls}</td>
-      <td>{articles[0].miniscore.batsmanNonStriker.batFours}</td>
-      <td>{articles[0].miniscore.batsmanNonStriker.batSixes}</td>
-      <td>{articles[0].miniscore.batsmanNonStriker.batStrikeRate}</td>
-    </tr>
-   
-  </tbody>
-</table>
-<table className="table table-bordered ">
-  <thead className="table-success">
-    <tr>
-      <th scope="col">Bowlers</th>
-      <th scope="col">O</th>
-      <th scope="col">M</th>
-      <th scope="col">R</th>
-      <th scope="col">W</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">{articles[0].miniscore.bowlerStriker.bowlName}</th>
-      <td>{articles[0].miniscore.bowlerStriker.bowlOvs}</td>
-      <td>{articles[0].miniscore.bowlerStriker.bowlMaidens}</td>
-      <td>{articles[0].miniscore.bowlerStriker.bowlRuns}</td>
-      <td>{articles[0].miniscore.bowlerStriker.bowlWkts}</td>
-      
-    </tr>
-    <tr>
-         <th scope="row">{articles[0].miniscore.bowlerNonStriker.bowlName}</th>
-      <td>{articles[0].miniscore.bowlerNonStriker.bowlOvs}</td>
-      <td>{articles[0].miniscore.bowlerNonStriker.bowlMaidens}</td>
-      <td>{articles[0].miniscore.bowlerNonStriker.bowlRuns}</td>
-      <td>{articles[0].miniscore.bowlerNonStriker.bowlWkts}</td>
-    </tr>
-  
-  </tbody>
-</table>
+                    <tbody>
+                        <tr>
+                            <th scope="row">{lastInning?.bowler?.[0].name}</th>
+                            <td>{lastInning?.bowler?.[0].overs}</td>
+                            <td>{lastInning?.bowler?.[0].runs}</td>
+                            <td>{lastInning?.bowler?.[0].maidens}</td>
+                            <td>{lastInning?.bowler?.[0].wickets}</td>
 
-      </div>
+                        </tr>
+                        <tr>
+                             <th scope="row">{lastInning?.bowler?.[1].name}</th>
+                            <td>{lastInning?.bowler?.[1].overs}</td>
+                            <td>{lastInning?.bowler?.[1].runs}</td>
+                            <td>{lastInning?.bowler?.[1].maidens}</td>
+                            <td>{lastInning?.bowler?.[1].wickets}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                    </>
+                )}
+               
+               
+
+            </div>
+        </>
+
+
     )
-  }
-  export default Live
+}
+export default Live
 

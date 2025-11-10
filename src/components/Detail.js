@@ -9,6 +9,7 @@ import {
 
 const Detail = (props)=> {
   const {id}=useParams();
+// console.log("details",id)
   
     
     return (
@@ -17,13 +18,13 @@ const Detail = (props)=> {
         <hr />
         <ul className="nav nav-pills nav-fill nav-underline">
           <li className="nav-item">
-            <Link  className="nav-link active"  to="live">Live</Link>
+            <Link  className="nav-link active"  to={`live/${id}`}>Live</Link>
           </li>
            <li className="nav-item">
-            <Link className="nav-link" to="hscorecard">Scorecard</Link>
+            <Link className="nav-link" to={`hscorecard/${id}`}>Scorecard</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="matchinfo">MatchInfo</Link>
+            <Link className="nav-link" to={`matchinfo/${id}`}>MatchInfo</Link>
           </li>
          
          

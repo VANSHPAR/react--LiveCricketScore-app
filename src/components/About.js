@@ -3,8 +3,8 @@ import React from 'react'
 export default function About() {
   return (
     <div>
-        This is in About Component
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum earum quae nam architecto eos inventore, ipsum repudiandae fugiat praesentium quisquam, enim dolores? Fuga inventore error excepturi quasi optio modi, culpa maxime quidem quos magni reiciendis.</p>
+        
+        <p>This application is built to offer real-time cricket scores with a simple and modern interface. It fetches detailed match data—including scorecards, fall of wickets, partnerships, and match status—using the Cricbuzz API. Each match page dynamically updates to reflect the latest innings, batting performances, and bowling statistics. The app is optimized for speed, accuracy, and a seamless viewing experience so fans can enjoy live cricket updates anytime.</p>
     </div>
   )
 }
