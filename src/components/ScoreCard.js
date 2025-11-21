@@ -9,7 +9,7 @@ const ScoreCard = (props)=> {
   
   
      let {name,r1,w1,o1,r2,w2,o2,status,id,team1,team2,url1,url2}=props;
-     console.log("scorecard",id)
+    // console.log("scorecard",id)
     return (
       <div className="my-3">
         <div className="card" >

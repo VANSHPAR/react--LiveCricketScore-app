@@ -294,7 +294,7 @@ const fetchMatches = async () => {
       {loading && <Spinner/>}
       
           <div className="row">
-          {articles.map((ele) => {
+          {articles?.map((ele) => {
             return (
               <div className="col-md-3" matchid={ele.seriesMatches[0]?.seriesAdWrapper?.matches[0]?.matchInfo?.matchId}>
                 
