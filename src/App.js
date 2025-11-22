@@ -7,13 +7,15 @@ import About from './components/About';
 import Detail from './components/Detail';
 import Live from './components/Live';
 import Hscorecard from './components/Hscorecard';
-
+import Errorpage from './components/Errorpage';
 import Matchinfo from './components/Matchinfo';
 import {
   BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
+
+
 export default class App extends Component {
  
   render() {
@@ -34,7 +36,9 @@ export default class App extends Component {
                  <Route  path="live/:id" element={<Live />} />
                 <Route  path="hscorecard/:id" element={<Hscorecard />} />
                  <Route  path="matchinfo/:id" element={<Matchinfo />} />
+                
                  </Route>
+                  <Route exact path="/*" element={<Errorpage />} />
                  
        
        
